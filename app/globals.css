@@ -1,9 +1,9 @@
-html{cursor:url('/assets/paw-cursor.png?v=7') 19 22, auto}
+html{cursor:url('/assets/paw-cursor.png?v=11') 18 20, auto}
 body{margin:0;background:#E9E5DF;color:#29262B;font-family:'Figtree',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
 *{box-sizing:border-box}
 p{font-size:16px !important}
 p,h1,h2,h3,h4,li,blockquote,figcaption,label,span{text-wrap:pretty}
-a, button, label, summary, #gallery-grid > div{cursor:url('/assets/paw-cursor.png?v=7') 19 22, pointer}
+a, button, label, summary, #gallery-grid > div{cursor:url('/assets/paw-cursor.png?v=11') 18 20, pointer}
 input, textarea{cursor:text}
 select{cursor:pointer}
 .page-home a{color:#29262B;text-decoration-color:#E99025;text-underline-offset:3px}
@@ -25,7 +25,7 @@ h1, h2, h3, button, a[style*="999px"] { text-transform: capitalize; }
 header.site-header .site-phone{padding:12px 18px;transition:padding .28s ease;text-transform:none}
 header.site-header.is-stuck .site-phone{padding:8px 14px}
 header.site-header .site-phone svg{width:18px;height:18px;transition:width .28s ease,height .28s ease}
-#gallery-grid > div{cursor:url('/assets/paw-cursor.png?v=7') 19 22, pointer}
+#gallery-grid > div{cursor:url('/assets/paw-cursor.png?v=11') 18 20, pointer}
 header.site-header .site-nav > a:not(.site-phone),
 header.site-header .nav-drop > a{position:relative}
 header.site-header .site-nav > a.is-section::after,

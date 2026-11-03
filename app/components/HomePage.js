@@ -35,7 +35,7 @@ const FAQS = [
       <>
         Call <a href="tel:6083172961" style={{ fontWeight: 700, whiteSpace: 'nowrap' }}><PhoneIcon faq />608-317-2961</a>
         , email <a href="mailto:zenandden@gmail.com" style={{ fontWeight: 700 }}>zenandden@gmail.com</a>
-        , message us on Facebook, visit us at <a href={MAPS_URL} target="_blank" rel="noopener" style={{ fontWeight: 700 }}>1805 Granary St., Unit 10, Holmen, WI</a>
+        , message us on Facebook, <a href={MAPS_URL} target="_blank" rel="noopener" style={{ fontWeight: 700 }}>visit us</a>
         , or use the <a href="#contact" style={{ fontWeight: 700 }}>request form</a> on this page.
       </>
     ),
@@ -372,8 +372,8 @@ export default function HomePage() {
           <h2 style={{ margin: 0, fontFamily: "'Archivo',sans-serif", fontVariationSettings: "'wdth' 114", fontWeight: 800, fontSize: 'clamp(36px,4.4vw,56px)', lineHeight: 1, letterSpacing: '-0.02em' }}>Good questions.</h2>
           <p style={{ margin: 0, fontSize: 17, lineHeight: 1.6, color: '#4a474d' }}>
             Don&apos;t see yours? Give us a call at <a href="tel:6083172961" style={{ fontWeight: 700, whiteSpace: 'nowrap' }}><PhoneIcon faq />608-317-2961</a>
-            , visit us at <a href={MAPS_URL} target="_blank" rel="noopener" style={{ fontWeight: 700 }}>1805 Granary St., Unit 10, Holmen, WI</a>
-            , or use the <a href="#contact" style={{ fontWeight: 700 }}>contact form</a>.
+            , <a href={MAPS_URL} target="_blank" rel="noopener" style={{ fontWeight: 700 }}>visit us</a>
+            , <span style={{ whiteSpace: 'nowrap' }}>or use the <a href="#contact" style={{ fontWeight: 700 }}>contact form</a>.</span>
           </p>
         </div>
         <div style={{ display: 'flex', flexDirection: 'column', gap: 10, gridColumn: 'span 2', minWidth: 0 }}>
@@ -398,7 +398,7 @@ export default function HomePage() {
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(210px,1fr))', gap: 12 }}>
               <El tag="a" href="tel:6083172961" s="text-decoration:none;color:#FFFFFF;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);border-radius:20px;padding:18px 20px;display:flex;flex-direction:column;gap:6px" hover="background:rgba(233,144,37,0.16);color:#FFFFFF"><span style={{ fontSize: 12, letterSpacing: '0.12em', color: '#E99025', fontWeight: 800 }}>CALL</span><span style={{ fontSize: 19, fontWeight: 700 }}>608-317-2961</span></El>
               <El tag="a" href="mailto:zenandden@gmail.com" s="text-decoration:none;color:#FFFFFF;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);border-radius:20px;padding:18px 20px;display:flex;flex-direction:column;gap:6px" hover="background:rgba(233,144,37,0.16);color:#FFFFFF"><span style={{ fontSize: 12, letterSpacing: '0.12em', color: '#E99025', fontWeight: 800 }}>EMAIL</span><span style={{ fontSize: 19, fontWeight: 700 }}>zenandden@gmail.com</span></El>
-              <div style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.12)', borderRadius: 20, padding: '18px 20px', display: 'flex', flexDirection: 'column', gap: 6 }}><span style={{ fontSize: 12, letterSpacing: '0.12em', color: '#E99025', fontWeight: 800 }}>VISIT</span><span style={{ fontSize: 17, lineHeight: 1.45 }}>1805 Granary St., Unit 10<br />Holmen, WI 54636</span></div>
+              <div style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.12)', borderRadius: 20, padding: '18px 20px', display: 'flex', flexDirection: 'column', gap: 6 }}><span style={{ fontSize: 12, letterSpacing: '0.12em', color: '#E99025', fontWeight: 800 }}>VISIT</span><span style={{ fontSize: 17, lineHeight: 1.45 }}>1805 Granary St.<br />Unit 10<br />Holmen, WI 54636</span></div>
               <div style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.12)', borderRadius: 20, padding: '18px 20px', display: 'flex', flexDirection: 'column', gap: 6 }}><span style={{ fontSize: 12, letterSpacing: '0.12em', color: '#E99025', fontWeight: 800 }}>SERVING</span><span style={{ fontSize: 17, lineHeight: 1.45 }}>Holmen, Onalaska, La Crosse & a 20-mile radius</span></div>
             </div>
           </div>
@@ -468,7 +468,7 @@ export default function HomePage() {
                 <a href="tel:6083172961" style={{ color: '#FFFFFF', display: 'inline-flex', alignItems: 'center', gap: 10 }}><PhoneIcon size={18} /><span>608-317-2961</span></a>
                 <a href={MAPS_URL} target="_blank" rel="noopener" style={{ color: '#FFFFFF', display: 'inline-flex', alignItems: 'flex-start', gap: 10, fontWeight: 600 }}>
                   <span style={{ marginTop: 2 }}><MapPinIcon size={18} /></span>
-                  <span>1805 Granary St., Unit 10<br />Holmen, WI 54636</span>
+                  <span>1805 Granary St.<br />Unit 10<br />Holmen, WI 54636</span>
                 </a>
                 <a href="mailto:zenandden@gmail.com" style={{ color: '#FFFFFF', display: 'inline-flex', alignItems: 'center', gap: 10 }}><MailIcon size={18} /><span>zenandden@gmail.com</span></a>
               </div>
