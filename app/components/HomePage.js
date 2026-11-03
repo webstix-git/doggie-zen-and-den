@@ -1,23 +1,22 @@
 'use client';
 
-import { useEffect, useState } from 'react';
-import { ArrowIcon, El, FacebookIcon, PhoneIcon } from './el';
+import { useEffect, useLayoutEffect, useState } from 'react';
+import { ArrowIcon, El, FacebookIcon, MailIcon, MapPinIcon, PhoneIcon } from './el';
 import LegalLinks from './LegalLinks';
 
 const STATS = [
   { v: '10', l: 'years in business' },
-  { v: '96%', l: 'recommend us' },
-  { v: '218', l: 'Facebook reviews' },
   { v: '20 mi', l: 'service radius' },
 ];
+const MAPS_URL = 'https://www.google.com/maps?q=Doggie+Zen+%26+Den,+1805+Granary+St+Unit+10,+Holmen,+WI+54636';
 const GROOM = ['Bath', 'Hair trim', 'Nails', 'Ears', 'Teeth', 'Glands'];
 const BOARD = ['Senior dogs', 'Anxious dogs', 'Unique needs'];
 const REASONS = [
-  { n: '1', title: 'Compassionate, patient care', body: 'Especially for anxious, nervous, or difficult-to-groom dogs.' },
-  { n: '2', title: 'Experienced, trusted groomers', body: 'Clients ask for their groomer by name and stay with them for years.' },
-  { n: '3', title: 'Excellent grooming results', body: 'Dogs come home looking, smelling, and feeling great.' },
-  { n: '4', title: 'Friendly, personalized service', body: 'Clear communication, flexibility, and attention to individual needs.' },
-  { n: '5', title: 'Fair pricing', body: 'Quality care at reasonable prices.' },
+  { n: '1', title: <><span style={{ whiteSpace: 'nowrap' }}>Compassionate,</span><br /><span style={{ whiteSpace: 'nowrap' }}>patient care</span></>, body: 'Especially for anxious, nervous, or difficult-to-groom dogs.' },
+  { n: '2', title: <>Experienced, trusted{'\u00A0'}groomers</>, body: 'Clients ask for their groomer by name and stay with them for\u00A0years.' },
+  { n: '3', title: <>Excellent<br /><span style={{ whiteSpace: 'nowrap' }}>grooming results</span></>, body: 'Dogs come home looking, smelling, and feeling\u00A0great.' },
+  { n: '4', title: <>Friendly, personalized{'\u00A0'}service</>, body: 'Clear communication, flexibility, and attention to individual\u00A0needs.' },
+  { n: '5', title: 'Fair pricing', body: 'Quality care at reasonable\u00A0prices.' },
 ];
 const REVIEWS = [
   { quote: 'Kim and the staff take such great care of our 2 beagles when they get groomed! They have anxiety, and she shows them love when we get there and always tells me how they were. They have a genuine love for animals.', name: 'Google review', source: 'August 2024' },
@@ -30,30 +29,56 @@ const FAQS = [
   { q: 'Do you board senior dogs or dogs with special needs?', a: 'Yes. Our boarding offers personalized care for senior dogs, anxious dogs, and pets with unique needs.' },
   { q: 'Do I need to book on a regular schedule?', a: 'No. We offer both one-time services and ongoing appointments, whichever suits you and your dog.' },
   { q: 'What areas do you serve?', a: 'We are located in Holmen and proudly serve Onalaska, La Crosse, and communities within about 20 miles.' },
-  { q: 'How do I book?', a: 'Call 608-317-2961, email zenandden@gmail.com, message us on Facebook, or use the request form on this page.' },
+  {
+    q: 'How do I book?',
+    a: (
+      <>
+        Call <a href="tel:6083172961" style={{ fontWeight: 700, whiteSpace: 'nowrap' }}><PhoneIcon faq />608-317-2961</a>
+        , email <a href="mailto:zenandden@gmail.com" style={{ fontWeight: 700 }}>zenandden@gmail.com</a>
+        , message us on Facebook, visit us at <a href={MAPS_URL} target="_blank" rel="noopener" style={{ fontWeight: 700 }}>1805 Granary St., Unit 10, Holmen, WI</a>
+        , or use the <a href="#contact" style={{ fontWeight: 700 }}>request form</a> on this page.
+      </>
+    ),
+  },
 ];
 const SVC = ['Grooming', 'Boarding', 'Both'];
 const SHOTS = [
-  '/assets/salon.jpg',
-  '/assets/fb-abby.jpg',
-  '/assets/poodle-park.jpg',
-  '/assets/corgi-groomer.jpg',
-  '/assets/fb-welcome.jpg',
-  '/assets/sign-wood.webp',
-  '/assets/corgi-table.jpg',
-  '/assets/corgi-bath.jpg',
-  '/assets/fb-maverick.jpg',
-  '/assets/fb-inigo.jpg',
+  // Spring / cherry blossom
+  '/images-new/684745948_1572259728241593_3737129147181242563_n.jpg',
+  '/images-new/685936628_1572262701574629_623599799378289251_n.jpg',
+  '/images-new/686183254_1572251918242374_2545798712660880906_n.jpg',
+  '/images-new/686295464_1572139554920277_1109727149676777114_n.jpg',
+  // Farm / barn
+  '/images-new/743541419_1674843270413678_2301326152599441399_n.jpeg',
+  '/images-new/748718981_1025545183802632_343023940380264957_n.jpeg',
+  '/images-new/749432672_1509577237003831_5961666031294141734_n.jpeg',
+  '/images-new/753145688_2067958493852535_1115693096067545367_n.jpeg',
+  // Sunset / cornfield
+  '/images-new/762372437_1407835941197864_8271008587082124663_n.jpeg',
+  '/images-new/763119712_1019662797705546_2181251117695170663_n.jpeg',
+  '/images-new/763918473_1555997435551169_5285354757435899059_n.jpeg',
+  '/images-new/768361386_28256551800643076_7089430914872924579_n.jpeg',
+  // City night / moon
+  '/images-new/773624246_1031871796288223_653109384547104159_n.jpeg',
+  '/images-new/774475675_1674781084656123_3947626137564277904_n.jpg',
+  '/images-new/775154288_1701347674255369_8631172163731394577_n.jpeg',
+  '/images-new/777801080_1535468737882365_2104710154492282357_n.jpeg',
 ];
+const GALLERY_TALL = new Set([0, 4, 8, 12]);
 
 const inputS = "font:inherit;font-weight:500;font-size:16px;padding:15px 16px;border-radius:14px;border:1.5px solid #c9c2b9;background:#FFFFFF;color:#29262B;outline-color:#E99025";
 
-const SECTIONS = ['about', 'services', 'why', 'gallery', 'faq'];
+const SECTIONS = ['about', 'services', 'why', 'gallery', 'reviews', 'faq', 'contact'];
 
 export default function HomePage() {
-  const [svc, setSvc] = useState(0);
+  const [svc, setSvc] = useState('');
   const [shot, setShot] = useState(-1);
   const [section, setSection] = useState('');
+
+  useLayoutEffect(() => {
+    const header = document.querySelector('header.site-header');
+    if (header) header.classList.toggle('is-stuck', window.scrollY > 8);
+  }, []);
 
   useEffect(() => {
     const onScroll = () => {
@@ -110,7 +135,7 @@ export default function HomePage() {
   return (
     <div className="page-home" style={{ minHeight: '100vh', overflowX: 'clip' }}>
       <div style={{ background: '#29262B', color: '#FFFFFF', display: 'flex', justifyContent: 'center', alignItems: 'center', gap: 14, flexWrap: 'wrap', padding: '10px 20px', fontSize: 15, textAlign: 'center' }}>
-        <span style={{ fontFamily: "'Caveat Brush',cursive", fontSize: 22, color: '#E99025', lineHeight: 1 }}>Holiday offer</span>
+        <span className="eyebrow" style={{ fontFamily: "'Caveat Brush',cursive", fontSize: 22, color: '#E99025', lineHeight: 1 }}>Holiday offer</span>
         <span>Watch the video for this season&apos;s special.</span>
         <a href="#holiday" style={{ color: '#FFFFFF', fontWeight: 600, textDecoration: 'none', textTransform: 'capitalize' }}><span style={{ textDecoration: 'underline', textDecorationColor: '#E99025', textUnderlineOffset: 3 }}>See the offer</span></a>
       </div>
@@ -119,11 +144,22 @@ export default function HomePage() {
         <nav>
           <a href="#top" style={{ display: 'flex', alignItems: 'center' }}><img className="site-logo" src="/assets/logo-full-clear.png" alt="Doggie Zen & Den" /></a>
           <div className="site-nav">
-            <a href="#about" className={section === 'about' ? 'is-section' : undefined} style={{ textDecoration: 'none' }}>About</a>
-            <a href="#services" className={section === 'services' ? 'is-section' : undefined} style={{ textDecoration: 'none' }}>Services</a>
-            <a href="#why" className={section === 'why' ? 'is-section' : undefined} style={{ textDecoration: 'none' }}>Why Us</a>
+            <a href="#top" className={!section ? 'is-section' : undefined} style={{ textDecoration: 'none' }}>Home</a>
+            <a href="#about" className={section === 'about' ? 'is-section' : undefined} style={{ textDecoration: 'none' }}>About Us</a>
+            <div className={`nav-drop${section === 'services' ? ' is-section' : ''}`}>
+              <a href="#services" className={section === 'services' ? 'is-section' : undefined}>Our Services <span aria-hidden="true" style={{ fontSize: '0.75em' }}>▾</span></a>
+              <div className="nav-drop-menu">
+                <div className="nav-drop-menu-inner">
+                  <a href="#services">Grooming</a>
+                  <a href="#services">Boarding</a>
+                </div>
+              </div>
+            </div>
+            <a href="#why" className={section === 'why' ? 'is-section' : undefined} style={{ textDecoration: 'none' }}>Why Choose Us</a>
             <a href="#gallery" className={section === 'gallery' ? 'is-section' : undefined} style={{ textDecoration: 'none' }}>Gallery</a>
+            <a href="#reviews" className={section === 'reviews' ? 'is-section' : undefined} style={{ textDecoration: 'none' }}>Testimonials</a>
             <a href="#faq" className={section === 'faq' ? 'is-section' : undefined} style={{ textDecoration: 'none' }}>FAQ</a>
+            <a href="#contact" className={section === 'contact' ? 'is-section' : undefined} style={{ textDecoration: 'none' }}>Contact Us</a>
             <El tag="a" className="site-phone" href="tel:6083172961" s="text-decoration:none;background:#E99025;color:#29262B;border-radius:999px;font-weight:700;white-space:nowrap;display:inline-flex;align-items:center;gap:8px" hover="background:#29262B;color:#FFFFFF"><PhoneIcon />608-317-2961</El>
           </div>
         </nav>
@@ -133,19 +169,14 @@ export default function HomePage() {
         <div aria-hidden="true" style={{ position: 'absolute', inset: 0, backgroundImage: "url('/assets/paw-pattern.svg')", backgroundSize: '560px 560px', pointerEvents: 'none' }} />
         <div style={{ position: 'relative', maxWidth: 1280, margin: '0 auto', padding: 'clamp(40px,6vw,88px) clamp(20px,4vw,48px) clamp(56px,7vw,100px)', display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(min(100%,460px),1fr))', gap: 'clamp(40px,5vw,72px)', alignItems: 'center' }}>
           <div data-reveal="" style={{ display: 'flex', flexDirection: 'column', gap: 28 }}>
-            <div style={{ fontFamily: "'Caveat Brush',cursive", fontSize: 30, color: '#80644F', lineHeight: 1 }}>Grooming & boarding · Holmen, WI</div>
+            <div className="eyebrow" style={{ fontFamily: "'Caveat Brush',cursive", fontSize: 30, color: '#80644F', lineHeight: 1 }}>Grooming & boarding · Holmen, WI</div>
             <h1 style={{ margin: 0, fontFamily: "'Archivo',sans-serif", fontVariationSettings: "'wdth' 118", fontWeight: 850, fontSize: 'clamp(42px,6.4vw,76px)', lineHeight: 0.95, letterSpacing: '-0.02em', textTransform: 'uppercase' }}>
               Expert Grooming.<br /><span style={{ color: '#E99025' }}>Gentle Hands.</span><br />Happy Dogs.
             </h1>
             <p style={{ margin: 0, fontSize: 'clamp(18px,1.6vw,21px)', lineHeight: 1.55, color: '#4a474d', maxWidth: 520, textWrap: 'pretty' }}>Professional dog grooming and personalized boarding in Holmen, Wisconsin.</p>
             <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
-              <El tag="a" href="#contact" s="text-decoration:none;background:#29262B;color:#FFFFFF;padding:17px 28px;border-radius:999px;font-weight:700;font-size:17px" hover="background:#80644F;color:#FFFFFF">Book a grooming</El>
-              <El tag="a" href="#services" s="text-decoration:none;border:2px solid #29262B;color:#29262B;padding:15px 26px;border-radius:999px;font-weight:700;font-size:17px" hover="background:#29262B;color:#FFFFFF">Ask about boarding</El>
-            </div>
-            <div style={{ display: 'flex', gap: 28, flexWrap: 'wrap', paddingTop: 8, borderTop: '1px solid rgba(41,38,43,0.15)' }}>
-              <div style={{ paddingTop: 18 }}><div style={{ fontFamily: "'Archivo',sans-serif", fontVariationSettings: "'wdth' 118", fontWeight: 800, fontSize: 30 }}>10 years</div><div style={{ fontSize: 14, color: '#656268' }}>caring for local dogs</div></div>
-              <div style={{ paddingTop: 18 }}><div style={{ fontFamily: "'Archivo',sans-serif", fontVariationSettings: "'wdth' 118", fontWeight: 800, fontSize: 30 }}>96%</div><div style={{ fontSize: 14, color: '#656268' }}>recommend us</div></div>
-              <div style={{ paddingTop: 18 }}><div style={{ fontFamily: "'Archivo',sans-serif", fontVariationSettings: "'wdth' 118", fontWeight: 800, fontSize: 30 }}>218</div><div style={{ fontSize: 14, color: '#656268' }}>Facebook reviews</div></div>
+              <El tag="a" href="#contact" className="btn-text" s="text-decoration:none;background:#29262B;color:#FFFFFF;padding:17px 28px;border-radius:999px;font-weight:700;font-size:17px" hover="background:#80644F;color:#FFFFFF">Book a grooming</El>
+              <El tag="a" href="#services" className="btn-text" s="text-decoration:none;border:2px solid #29262B;color:#29262B;padding:15px 26px;border-radius:999px;font-weight:700;font-size:17px" hover="background:#29262B;color:#FFFFFF">Ask about boarding</El>
             </div>
           </div>
           <div data-reveal="" style={{ position: 'relative' }}>
@@ -169,21 +200,21 @@ export default function HomePage() {
         <div data-reveal="" style={{ position: 'relative', paddingBottom: '12%' }}>
           <img src="/assets/sign-wood.webp" alt="The Doggie Zen & Den sign on a reclaimed wood wall" style={{ width: '88%', aspectRatio: '4/4.2', objectFit: 'cover', objectPosition: '50% 25%', borderRadius: 32, display: 'block' }} />
           <div style={{ position: 'absolute', right: 0, bottom: 0, width: '50%', aspectRatio: '1/1', borderRadius: 28, overflow: 'hidden', border: '8px solid #E9E5DF', boxShadow: '0 30px 60px -24px rgba(41,38,43,0.5)' }}>
-            <img src="/assets/corgi-bath.jpg" alt="Corgi enjoying a bubbly bath" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: '45% 40%', display: 'block' }} />
+            <img src="/images/862431484_1442652258037121_8866427928447707797_n.jpg" alt="Freshly groomed dog on the salon table" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: '50% 58%', display: 'block' }} />
           </div>
-          <div style={{ position: 'absolute', left: 20, bottom: 'calc(12% + 20px)', background: '#29262B', color: '#FFFFFF', borderRadius: 16, padding: '14px 18px', fontSize: 14, lineHeight: 1.4, boxShadow: '0 18px 40px -20px rgba(41,38,43,0.6)' }}>
+          <div style={{ position: 'absolute', left: 20, bottom: 'calc(12% + 20px)', background: '#29262B', color: '#FFFFFF', borderRadius: 16, padding: '14px 18px', fontSize: 14, lineHeight: 1.4, textAlign: 'center', boxShadow: '0 18px 40px -20px rgba(41,38,43,0.6)' }}>
             <div style={{ fontWeight: 700 }}>1805 Granary St., Unit 10</div>
             <div style={{ color: '#d6d2cc' }}>Holmen, WI 54636</div>
           </div>
         </div>
         <div data-reveal="" style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
-          <div style={{ fontFamily: "'Caveat Brush',cursive", fontSize: 32, color: '#80644F', lineHeight: 1 }}>About us</div>
+          <div className="eyebrow" style={{ fontFamily: "'Caveat Brush',cursive", fontSize: 32, color: '#80644F', lineHeight: 1 }}>About us</div>
           <h2 style={{ margin: 0, fontFamily: "'Archivo',sans-serif", fontVariationSettings: "'wdth' 114", fontWeight: 800, fontSize: 'clamp(36px,4.4vw,60px)', lineHeight: 1, letterSpacing: '-0.02em', textWrap: 'balance' }}>Every dog deserves <span style={{ fontFamily: "'Caveat Brush',cursive", fontWeight: 400, color: '#E99025', fontSize: '1.12em', letterSpacing: 0 }}>patience & kindness.</span></h2>
           <p style={{ margin: 0, fontSize: 18, lineHeight: 1.7, color: '#4a474d', textWrap: 'pretty' }}>Doggie Zen & Den offers professional dog grooming and personalized boarding in Holmen, Wisconsin. Our caring, experienced team believes every dog deserves patience, kindness, and individualized attention. From puppies and senior dogs to nervous pups who need a little extra reassurance, we strive to make every visit a positive experience.</p>
           <p style={{ margin: 0, fontSize: 18, lineHeight: 1.7, color: '#4a474d', textWrap: 'pretty' }}>Known for quality grooming, friendly service, and genuine love for animals, we&apos;re proud to care for the pets of Holmen, Onalaska, La Crosse, and surrounding communities.</p>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(120px,1fr))', gap: 12, marginTop: 8 }}>
             {STATS.map((s) => (
-              <div key={s.l} style={{ background: '#FFFFFF', borderRadius: 20, padding: '20px 18px', display: 'flex', flexDirection: 'column', gap: 4 }}>
+              <div key={s.l} style={{ background: '#FFFFFF', borderRadius: 20, padding: '20px 18px', display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', gap: 4 }}>
                 <div style={{ fontFamily: "'Archivo',sans-serif", fontVariationSettings: "'wdth' 120", fontWeight: 850, fontSize: 34, lineHeight: 1, letterSpacing: '-0.02em' }}>{s.v}</div>
                 <div style={{ fontSize: 14, color: '#656268', lineHeight: 1.35 }}>{s.l}</div>
               </div>
@@ -195,7 +226,7 @@ export default function HomePage() {
       <section id="services" data-screen-label="Services" style={{ background: '#FFFFFF' }}>
         <div style={{ maxWidth: 1280, margin: '0 auto', padding: 'clamp(72px,10vw,140px) clamp(20px,4vw,48px)', display: 'flex', flexDirection: 'column', gap: 'clamp(40px,5vw,64px)' }}>
           <div data-reveal="" style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: 18, maxWidth: 720 }}>
-            <div style={{ fontFamily: "'Caveat Brush',cursive", fontSize: 32, color: '#80644F', lineHeight: 1 }}>Our services</div>
+            <div className="eyebrow" style={{ fontFamily: "'Caveat Brush',cursive", fontSize: 32, color: '#80644F', lineHeight: 1 }}>Our services</div>
             <h2 style={{ margin: 0, fontFamily: "'Archivo',sans-serif", fontVariationSettings: "'wdth' 114", fontWeight: 800, fontSize: 'clamp(36px,4.4vw,60px)', lineHeight: 1, letterSpacing: '-0.02em' }}>Full pet care under one roof.</h2>
             <p style={{ margin: 0, maxWidth: 520, fontSize: 17, lineHeight: 1.6, color: '#4a474d' }}>One-time visits or a regular schedule. Book a single groom, a boarding stay, or both.</p>
           </div>
@@ -237,29 +268,31 @@ export default function HomePage() {
       <section id="why" data-screen-label="Why Choose Us" style={{ background: '#E9E5DF' }}>
         <div style={{ maxWidth: 1280, margin: '0 auto', padding: 'clamp(72px,9vw,128px) clamp(20px,4vw,48px)', display: 'flex', flexDirection: 'column', gap: 'clamp(40px,5vw,56px)' }}>
           <div data-reveal="" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(min(100%,420px),1fr))', gap: 32, alignItems: 'end' }}>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
-              <div style={{ fontFamily: "'Caveat Brush',cursive", fontSize: 32, color: '#80644F', lineHeight: 1 }}>Why Choose Us</div>
-              <h2 style={{ margin: 0, fontFamily: "'Archivo',sans-serif", fontVariationSettings: "'wdth' 112", fontWeight: 800, fontSize: 'clamp(34px,4.2vw,56px)', lineHeight: 1.02, letterSpacing: '-0.02em', textWrap: 'balance' }}>Why dog owners trust us with their pets.</h2>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 16, maxWidth: 520 }}>
+              <div className="eyebrow" style={{ fontFamily: "'Caveat Brush',cursive", fontSize: 32, color: '#80644F', lineHeight: 1 }}>Why Choose Us</div>
+              <h2 style={{ margin: 0, fontFamily: "'Archivo',sans-serif", fontVariationSettings: "'wdth' 112", fontWeight: 800, fontSize: 'clamp(32px,3.8vw,48px)', lineHeight: 1.08, letterSpacing: '-0.02em', maxWidth: '14ch' }}>Why dog owners trust us with their pets.</h2>
             </div>
             <p style={{ margin: 0, fontSize: 18, lineHeight: 1.65, color: '#656268' }}>Many of our clients bring dogs that struggled with grooming elsewhere and found a positive experience here. These are the things they tell us matter most.</p>
           </div>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(min(100%,300px),1fr))', gap: 20 }}>
-            <div data-reveal="" style={{ gridRow: 'span 2', borderRadius: 32, overflow: 'hidden', minHeight: 420, position: 'relative' }}>
+          <div id="why-grid" style={{ display: 'grid', gridTemplateColumns: 'minmax(260px,380px) minmax(0,1fr)', gap: 20, alignItems: 'stretch' }}>
+            <div data-reveal="" style={{ borderRadius: 32, overflow: 'hidden', minHeight: 360, position: 'relative' }}>
               <img src="/assets/corgi-groomer.jpg" alt="Smiling groomer with two corgis" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: '45% 40%', display: 'block' }} />
-              <div style={{ position: 'absolute', left: 16, right: 16, bottom: 16, background: '#FFFFFF', borderRadius: 20, padding: '16px 20px', display: 'flex', alignItems: 'center', gap: 12 }}>
-                <img src="/assets/logo-mark.png" alt="" style={{ width: 34, mixBlendMode: 'multiply' }} />
-                <span style={{ fontSize: 15, lineHeight: 1.4, fontWeight: 600 }}>Clients follow their groomer by name for years.</span>
+              <div style={{ position: 'absolute', left: 12, right: 12, bottom: 12, background: '#FFFFFF', borderRadius: 18, padding: '12px 14px', display: 'flex', alignItems: 'center', gap: 10 }}>
+                <img src="/assets/logo-mark.png" alt="" style={{ width: 28, flex: 'none', mixBlendMode: 'multiply' }} />
+                <span style={{ fontSize: 13, lineHeight: 1.35, fontWeight: 600, textWrap: 'pretty' }}>Clients follow their groomer by name for{'\u00A0'}years.</span>
               </div>
             </div>
-            {REASONS.map((r) => (
-              <El key={r.n} data-reveal="" s="background:#FFFFFF;border-radius:28px;padding:28px;display:flex;flex-direction:column;gap:14px;transition:transform .4s ease" hover="transform:translateY(-4px);box-shadow:0 24px 50px -28px rgba(41,38,43,0.4)">
-                <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
-                  <span style={{ width: 52, height: 52, flex: 'none', borderRadius: 16, background: '#E99025', display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: "'Archivo',sans-serif", fontVariationSettings: "'wdth' 120", fontWeight: 850, fontSize: 20, color: '#29262B' }}>{r.n}</span>
-                  <div style={{ fontFamily: "'Archivo',sans-serif", fontVariationSettings: "'wdth' 108", fontWeight: 800, fontSize: 22, lineHeight: 1.15, textTransform: 'capitalize' }}>{r.title}</div>
-                </div>
-                <div style={{ fontSize: 16, lineHeight: 1.6, color: '#656268' }}>{r.body}</div>
-              </El>
-            ))}
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, minmax(0, 1fr))', gap: 16, minWidth: 0 }}>
+              {REASONS.map((r) => (
+                <El key={r.n} data-reveal="" s="background:#FFFFFF;border-radius:28px;padding:22px;display:flex;flex-direction:column;gap:12px;width:100%;min-width:0;box-sizing:border-box;transition:transform .4s ease" hover="transform:translateY(-4px);box-shadow:0 24px 50px -28px rgba(41,38,43,0.4)">
+                  <div style={{ display: 'flex', alignItems: 'flex-start', gap: 12, minWidth: 0 }}>
+                    <span style={{ width: 44, height: 44, flex: 'none', borderRadius: 14, background: '#E99025', display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: "'Archivo',sans-serif", fontVariationSettings: "'wdth' 120", fontWeight: 850, fontSize: 18, color: '#29262B' }}>{r.n}</span>
+                    <div style={{ fontFamily: "'Archivo',sans-serif", fontVariationSettings: "'wdth' 108", fontWeight: 800, fontSize: 18, lineHeight: 1.25, minWidth: 0, textWrap: 'pretty' }}>{r.title}</div>
+                  </div>
+                  <div style={{ fontSize: 15, lineHeight: 1.55, color: '#656268', textWrap: 'pretty' }}>{r.body}</div>
+                </El>
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -288,35 +321,24 @@ export default function HomePage() {
 
       <section id="gallery" data-screen-label="Gallery" style={{ maxWidth: 1280, margin: '0 auto', padding: 'clamp(64px,9vw,128px) clamp(20px,4vw,48px)', display: 'flex', flexDirection: 'column', gap: 40 }}>
         <div data-reveal="" style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
-          <div style={{ fontFamily: "'Caveat Brush',cursive", fontSize: 32, color: '#80644F', lineHeight: 1 }}>Gallery</div>
+          <div className="eyebrow" style={{ fontFamily: "'Caveat Brush',cursive", fontSize: 32, color: '#80644F', lineHeight: 1 }}>Gallery</div>
           <h2 style={{ margin: 0, fontFamily: "'Archivo',sans-serif", fontVariationSettings: "'wdth' 112", fontWeight: 800, fontSize: 'clamp(34px,4.2vw,56px)', lineHeight: 1.02, letterSpacing: '-0.015em' }}>Fresh from the table.</h2>
         </div>
         <div id="gallery-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill,minmax(min(100%,260px),1fr))', gridAutoRows: 260, gridAutoFlow: 'dense', gap: 16 }}>
-          <div data-reveal="" onClick={() => setShot(0)} style={{ gridRow: 'span 2', borderRadius: 22, overflow: 'hidden' }}><img src="/assets/salon.jpg" alt="Three dogs being groomed" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: '35% 50%', display: 'block' }} /></div>
-          <div data-reveal="" onClick={() => setShot(1)} style={{ borderRadius: 22, overflow: 'hidden' }}><img src="/assets/fb-abby.jpg" alt="" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} /></div>
-          <div data-reveal="" onClick={() => setShot(2)} style={{ borderRadius: 22, overflow: 'hidden' }}><img src="/assets/poodle-park.jpg" alt="Curly dog smiling up at its owner" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: '40% 30%', display: 'block' }} /></div>
-          <div data-reveal="" onClick={() => setShot(3)} style={{ borderRadius: 22, overflow: 'hidden' }}><img src="/assets/corgi-groomer.jpg" alt="Corgi standing on the grooming table" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: '50% 40%', display: 'block' }} /></div>
-          <div data-reveal="" onClick={() => setShot(4)} style={{ gridRow: 'span 2', borderRadius: 22, overflow: 'hidden' }}><img src="/assets/fb-welcome.jpg" alt="" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} /></div>
-          <div data-reveal="" onClick={() => setShot(5)} style={{ borderRadius: 22, overflow: 'hidden' }}><img src="/assets/sign-wood.webp" alt="Doggie Zen & Den logo on the wood wall" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: '50% 85%', display: 'block' }} /></div>
-          <div data-reveal="" onClick={() => setShot(6)} style={{ borderRadius: 22, overflow: 'hidden' }}><img src="/assets/corgi-table.jpg" alt="Corgi with a groomer at the salon table" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: '50% 35%', display: 'block' }} /></div>
-          <div data-reveal="" onClick={() => setShot(7)} style={{ borderRadius: 22, overflow: 'hidden' }}><img src="/assets/corgi-bath.jpg" alt="Corgi enjoying a bubbly bath" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: '45% 40%', display: 'block' }} /></div>
-          <div data-reveal="" onClick={() => setShot(8)} style={{ borderRadius: 22, overflow: 'hidden' }}><img src="/assets/fb-maverick.jpg" alt="" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} /></div>
-          <div data-reveal="" onClick={() => setShot(9)} style={{ borderRadius: 22, overflow: 'hidden' }}><img src="/assets/fb-inigo.jpg" alt="" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} /></div>
+          {SHOTS.map((src, i) => (
+            <div key={src} data-reveal="" onClick={() => setShot(i)} style={{ ...(GALLERY_TALL.has(i) ? { gridRow: 'span 2' } : null), borderRadius: 22, overflow: 'hidden' }}>
+              <img src={src} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: '50% 35%', display: 'block' }} />
+            </div>
+          ))}
         </div>
         <El tag="a" href="https://www.facebook.com/doggiezenandden/photos" target="_blank" rel="noopener" s="align-self:center;text-decoration:none;background:#29262B;color:#FFFFFF;padding:15px 24px;border-radius:999px;font-weight:700;font-size:16px" hover="background:#E99025;color:#29262B">View more pictures on FB</El>
       </section>
 
       <section id="reviews" data-screen-label="Testimonials" style={{ background: '#29262B', color: '#FFFFFF' }}>
         <div style={{ maxWidth: 1280, margin: '0 auto', padding: 'clamp(72px,10vw,140px) clamp(20px,4vw,48px)', display: 'flex', flexDirection: 'column', gap: 48 }}>
-          <div data-reveal="" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', gap: 24, flexWrap: 'wrap' }}>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 18 }}>
-              <div style={{ fontFamily: "'Caveat Brush',cursive", fontSize: 32, color: '#E99025', lineHeight: 1 }}>Kind words</div>
-              <h2 style={{ margin: 0, fontFamily: "'Archivo',sans-serif", fontVariationSettings: "'wdth' 114", fontWeight: 800, fontSize: 'clamp(36px,4.4vw,60px)', lineHeight: 1, letterSpacing: '-0.02em' }}>What pet parents say.</h2>
-            </div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: 16, background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.14)', borderRadius: 24, padding: '16px 22px' }}>
-              <span style={{ fontFamily: "'Archivo',sans-serif", fontVariationSettings: "'wdth' 120", fontWeight: 850, fontSize: 48, lineHeight: 1, color: '#E99025' }}>96%</span>
-              <span style={{ fontSize: 15, color: '#d6d2cc', maxWidth: 170, lineHeight: 1.35 }}>recommend us across 218 Facebook reviews</span>
-            </div>
+          <div data-reveal="" style={{ display: 'flex', flexDirection: 'column', gap: 18 }}>
+            <div className="eyebrow" style={{ fontFamily: "'Caveat Brush',cursive", fontSize: 32, color: '#E99025', lineHeight: 1 }}>Kind words</div>
+            <h2 style={{ margin: 0, fontFamily: "'Archivo',sans-serif", fontVariationSettings: "'wdth' 114", fontWeight: 800, fontSize: 'clamp(36px,4.4vw,60px)', lineHeight: 1, letterSpacing: '-0.02em' }}>What pet parents say.</h2>
           </div>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(min(100%,440px),1fr))', gap: 20 }}>
             <figure data-reveal="" style={{ margin: 0, background: '#E99025', color: '#29262B', borderRadius: 32, padding: 'clamp(32px,4vw,52px)', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', gap: 32 }}>
@@ -346,9 +368,13 @@ export default function HomePage() {
 
       <section id="faq" data-screen-label="FAQ" style={{ maxWidth: 1180, margin: '0 auto', padding: 'clamp(72px,10vw,140px) clamp(20px,4vw,48px)', display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(min(100%,320px),1fr))', gap: 'clamp(32px,5vw,72px)', alignItems: 'start' }}>
         <div data-reveal="" style={{ display: 'flex', flexDirection: 'column', gap: 18 }}>
-          <div style={{ fontFamily: "'Caveat Brush',cursive", fontSize: 32, color: '#80644F', lineHeight: 1 }}>FAQ</div>
+          <div className="eyebrow" style={{ fontFamily: "'Caveat Brush',cursive", fontSize: 32, color: '#80644F', lineHeight: 1 }}>FAQ</div>
           <h2 style={{ margin: 0, fontFamily: "'Archivo',sans-serif", fontVariationSettings: "'wdth' 114", fontWeight: 800, fontSize: 'clamp(36px,4.4vw,56px)', lineHeight: 1, letterSpacing: '-0.02em' }}>Good questions.</h2>
-          <p style={{ margin: 0, fontSize: 17, lineHeight: 1.6, color: '#4a474d' }}>Don&apos;t see yours? Give us a call at <a href="tel:6083172961" style={{ fontWeight: 700, whiteSpace: 'nowrap' }}><PhoneIcon faq />608-317-2961</a>.</p>
+          <p style={{ margin: 0, fontSize: 17, lineHeight: 1.6, color: '#4a474d' }}>
+            Don&apos;t see yours? Give us a call at <a href="tel:6083172961" style={{ fontWeight: 700, whiteSpace: 'nowrap' }}><PhoneIcon faq />608-317-2961</a>
+            , visit us at <a href={MAPS_URL} target="_blank" rel="noopener" style={{ fontWeight: 700 }}>1805 Granary St., Unit 10, Holmen, WI</a>
+            , or use the <a href="#contact" style={{ fontWeight: 700 }}>contact form</a>.
+          </p>
         </div>
         <div style={{ display: 'flex', flexDirection: 'column', gap: 10, gridColumn: 'span 2', minWidth: 0 }}>
           {FAQS.map((f) => (
@@ -366,7 +392,7 @@ export default function HomePage() {
       <section id="contact" data-screen-label="Contact" style={{ background: '#29262B', color: '#FFFFFF' }}>
         <div style={{ maxWidth: 1280, margin: '0 auto', padding: 'clamp(72px,10vw,140px) clamp(20px,4vw,48px) clamp(48px,6vw,80px)', display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(min(100%,440px),1fr))', gap: 'clamp(40px,5vw,72px)' }}>
           <div data-reveal="" style={{ display: 'flex', flexDirection: 'column', gap: 28 }}>
-            <div style={{ fontFamily: "'Caveat Brush',cursive", fontSize: 32, color: '#E99025', lineHeight: 1 }}>Contact</div>
+            <div className="eyebrow" style={{ fontFamily: "'Caveat Brush',cursive", fontSize: 32, color: '#E99025', lineHeight: 1 }}>Contact</div>
             <h2 style={{ margin: 0, fontFamily: "'Archivo',sans-serif", fontVariationSettings: "'wdth' 120", fontWeight: 850, fontSize: 'clamp(42px,5.4vw,76px)', lineHeight: 0.92, letterSpacing: '-0.025em', textTransform: 'uppercase' }}>Schedule your dog&apos;s next visit.</h2>
             <p style={{ margin: 0, fontSize: 18, lineHeight: 1.6, color: '#d6d2cc', maxWidth: 480 }}>Contact us to schedule your dog&apos;s next grooming appointment or inquire about boarding.</p>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(210px,1fr))', gap: 12 }}>
@@ -380,16 +406,18 @@ export default function HomePage() {
             <form onSubmit={(e) => { e.preventDefault(); window.location.href = 'thank-you.html'; }} style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
               <div style={{ fontFamily: "'Archivo',sans-serif", fontVariationSettings: "'wdth' 112", fontWeight: 800, fontSize: 28, textTransform: 'capitalize' }}>Request an appointment</div>
               <p style={{ margin: 0, fontSize: 14, lineHeight: 1.4, color: '#4a474d' }}>Fields marked with an asterisk (<span style={{ color: '#C62828' }}>*</span>) are required.</p>
-              <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
-                {SVC.map((label, i) => (
-                  <button key={label} type="button" onClick={() => setSvc(i)} style={{ font: 'inherit', cursor: 'pointer', border: '1.5px solid #29262B', background: svc === i ? '#29262B' : 'transparent', color: svc === i ? '#FFFFFF' : '#29262B', padding: '10px 16px', borderRadius: 999, fontWeight: 700, fontSize: 14 }}>{label}</button>
-                ))}
-              </div>
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(180px,1fr))', gap: 14 }}>
                 <label style={{ display: 'flex', flexDirection: 'column', gap: 6, fontSize: 14, fontWeight: 600 }}><span>Your name <span style={{ color: '#C62828' }}>*</span></span><input required name="name" style={cssInline(inputS)} /></label>
                 <label style={{ display: 'flex', flexDirection: 'column', gap: 6, fontSize: 14, fontWeight: 600 }}><span>Phone <span style={{ color: '#C62828' }}>*</span></span><input required name="phone" type="tel" style={cssInline(inputS)} /></label>
               </div>
               <label style={{ display: 'flex', flexDirection: 'column', gap: 6, fontSize: 14, fontWeight: 600 }}>Dog&apos;s name & breed<input name="dog" style={cssInline(inputS)} /></label>
+              <label style={{ display: 'flex', flexDirection: 'column', gap: 6, fontSize: 14, fontWeight: 600 }}>
+                <span>Service interested in <span style={{ color: '#C62828' }}>*</span></span>
+                <select required name="service" value={svc} onChange={(e) => setSvc(e.target.value)} className="contact-service-select" style={cssInline(inputS.replace('background:#FFFFFF', 'background-color:#FFFFFF') + ';padding-right:44px')}>
+                  <option value="" disabled>Select a service</option>
+                  {SVC.map((label) => <option key={label} value={label}>{label}</option>)}
+                </select>
+              </label>
               <label style={{ display: 'flex', flexDirection: 'column', gap: 6, fontSize: 14, fontWeight: 600 }}>Anything we should know?<textarea name="msg" rows={3} style={cssInline(inputS + ';resize:vertical')} /></label>
               <El tag="button" type="submit" s="font:inherit;cursor:pointer;border:none;background:#E99025;color:#29262B;padding:18px 28px;border-radius:999px;font-weight:800;font-size:17px" hover="background:#29262B;color:#FFFFFF">Send request</El>
             </form>
@@ -405,22 +433,44 @@ export default function HomePage() {
       <footer style={{ background: '#29262B', color: '#FFFFFF', position: 'relative', overflow: 'hidden', borderTop: '1px solid rgba(233,229,223,0.35)' }}>
         <img src="/assets/logo-mark.png" alt="" aria-hidden="true" style={{ position: 'absolute', right: '-4%', bottom: '-30%', width: '30%', maxWidth: 380, filter: 'invert(1)', mixBlendMode: 'screen', opacity: 0.06, pointerEvents: 'none' }} />
         <div style={{ position: 'relative', maxWidth: 1280, margin: '0 auto', padding: '56px clamp(20px,4vw,48px) 28px', display: 'flex', flexDirection: 'column', gap: 40 }}>
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: 32, flexWrap: 'wrap' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
-              <img src="/assets/logo-full-white.png" alt="Doggie Zen & Den" style={{ height: 72, width: 'auto', display: 'block' }} />
-              <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}><span style={{ fontFamily: "'Archivo',sans-serif", fontVariationSettings: "'wdth' 118", fontWeight: 850, fontSize: 22 }}>Doggie Zen & Den</span><span style={{ fontSize: 16, color: '#E9E5DF' }}>Professional Dog Grooming & Boarding in Holmen, WI</span></div>
-            </div>
-            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: 14 }}>
-              <div style={{ display: 'flex', gap: 'clamp(20px,3vw,36px)', flexWrap: 'wrap', fontSize: 16, fontWeight: 600, justifyContent: 'flex-end' }}>
-                <a href="#about" style={{ color: '#FFFFFF', textDecoration: 'none' }}>About</a>
-                <a href="#services" style={{ color: '#FFFFFF', textDecoration: 'none' }}>Services</a>
-                <a href="#gallery" style={{ color: '#FFFFFF', textDecoration: 'none' }}>Gallery</a>
-                <a href="#reviews" style={{ color: '#FFFFFF', textDecoration: 'none' }}>Reviews</a>
-                <a href="#contact" style={{ color: '#FFFFFF', textDecoration: 'none' }}>Contact</a>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(min(100%,220px),1fr))', gap: 'clamp(32px,4vw,56px)', alignItems: 'flex-start' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 14, maxWidth: 320 }}>
+              <img src="/assets/logo-full-white.png" alt="Doggie Zen & Den" style={{ height: 97, width: 184, display: 'block', objectFit: 'contain', objectPosition: 'left center' }} />
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
+                <span style={{ fontFamily: "'Archivo',sans-serif", fontVariationSettings: "'wdth' 118", fontWeight: 850, fontSize: 18 }}>Doggie Zen & Den</span>
+                <span style={{ fontSize: 14, lineHeight: 1.45, color: '#E9E5DF' }}>Professional Dog Grooming & Boarding in Holmen,{'\u00A0'}WI</span>
               </div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: 10, fontSize: 16, fontWeight: 600 }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 10, fontSize: 14, fontWeight: 600 }}>
                 <span>Follow us on:</span>
                 <a href="https://www.facebook.com/doggiezenandden" target="_blank" rel="noopener" aria-label="Facebook" style={{ color: '#E99025', display: 'inline-flex' }}><FacebookIcon /></a>
+              </div>
+            </div>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 12, justifySelf: 'center' }}>
+              <div style={{ fontSize: 13, fontWeight: 800, letterSpacing: '0.12em', color: '#E99025' }}>QUICK LINKS</div>
+              <div style={{ display: 'flex', gap: 'clamp(28px,4vw,48px)' }}>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: 10, fontSize: 16, fontWeight: 600 }}>
+                  <a href="#top" style={{ color: '#FFFFFF' }}>Home</a>
+                  <a href="#about" style={{ color: '#FFFFFF' }}>About Us</a>
+                  <a href="#services" style={{ color: '#FFFFFF' }}>Our Services</a>
+                  <a href="#why" style={{ color: '#FFFFFF' }}>Why Choose Us</a>
+                </div>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: 10, fontSize: 16, fontWeight: 600 }}>
+                  <a href="#gallery" style={{ color: '#FFFFFF' }}>Gallery</a>
+                  <a href="#reviews" style={{ color: '#FFFFFF' }}>Testimonials</a>
+                  <a href="#faq" style={{ color: '#FFFFFF' }}>FAQ</a>
+                  <a href="#contact" style={{ color: '#FFFFFF' }}>Contact Us</a>
+                </div>
+              </div>
+            </div>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 12, justifySelf: 'end' }}>
+              <div style={{ fontSize: 13, fontWeight: 800, letterSpacing: '0.12em', color: '#E99025' }}>CONTACT</div>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 14, fontSize: 16, fontWeight: 600, lineHeight: 1.45 }}>
+                <a href="tel:6083172961" style={{ color: '#FFFFFF', display: 'inline-flex', alignItems: 'center', gap: 10 }}><PhoneIcon size={18} /><span>608-317-2961</span></a>
+                <a href={MAPS_URL} target="_blank" rel="noopener" style={{ color: '#FFFFFF', display: 'inline-flex', alignItems: 'flex-start', gap: 10, fontWeight: 600 }}>
+                  <span style={{ marginTop: 2 }}><MapPinIcon size={18} /></span>
+                  <span>1805 Granary St., Unit 10<br />Holmen, WI 54636</span>
+                </a>
+                <a href="mailto:zenandden@gmail.com" style={{ color: '#FFFFFF', display: 'inline-flex', alignItems: 'center', gap: 10 }}><MailIcon size={18} /><span>zenandden@gmail.com</span></a>
               </div>
             </div>
           </div>

@@ -43,10 +43,39 @@ export function El({ tag: Tag = 'div', s, hover, children, ...rest }) {
   );
 }
 
-export function PhoneIcon({ faq }) {
+export function PhoneIcon({ faq, size }) {
+  const dim = faq ? 16 : size;
   return (
-    <svg viewBox="0 0 24 24" width={faq ? 16 : undefined} height={faq ? 16 : undefined} fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" style={faq ? { display: 'inline-block', verticalAlign: '-3px', marginRight: 6 } : undefined}>
+    <svg
+      viewBox="0 0 24 24"
+      {...(dim ? { width: dim, height: dim } : {})}
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2.4"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+      style={faq ? { display: 'inline-block', verticalAlign: '-3px', marginRight: 6 } : dim ? { display: 'block', flex: 'none' } : undefined}
+    >
       <path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z" />
+    </svg>
+  );
+}
+
+export function MailIcon({ size = 18 }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" style={{ display: 'block', flex: 'none' }}>
+      <path d="M4 6h16a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2z" />
+      <path d="m22 8-10 7L2 8" />
+    </svg>
+  );
+}
+
+export function MapPinIcon({ size = 18 }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" style={{ display: 'block', flex: 'none' }}>
+      <path d="M12 22s7-7.2 7-12a7 7 0 1 0-14 0c0 4.8 7 12 7 12z" />
+      <circle cx="12" cy="10" r="2.5" />
     </svg>
   );
 }
