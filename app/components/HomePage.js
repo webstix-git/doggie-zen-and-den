@@ -415,8 +415,9 @@ export default function HomePage() {
               <p style={{ margin: 0, fontSize: 14, lineHeight: 1.4, color: '#4a474d' }}>Fields marked with an asterisk (<span style={{ color: '#C62828' }}>*</span>) are required.</p>
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(180px,1fr))', gap: 14 }}>
                 <label style={{ display: 'flex', flexDirection: 'column', gap: 6, fontSize: 14, fontWeight: 600 }}><span>Name: <span style={{ color: '#C62828' }}>*</span></span><input required name="name" style={cssInline(inputS)} /></label>
-                <label style={{ display: 'flex', flexDirection: 'column', gap: 6, fontSize: 14, fontWeight: 600 }}><span>Phone: <span style={{ color: '#C62828' }}>*</span></span><input required name="phone" type="tel" style={cssInline(inputS)} /></label>
+                <label style={{ display: 'flex', flexDirection: 'column', gap: 6, fontSize: 14, fontWeight: 600 }}><span>Phone: <span style={{ color: '#C62828' }}>*</span></span><input required name="phone" type="tel" autoComplete="tel" style={cssInline(inputS)} /></label>
               </div>
+              <label style={{ display: 'flex', flexDirection: 'column', gap: 6, fontSize: 14, fontWeight: 600 }}><span>Email: <span style={{ color: '#C62828' }}>*</span></span><input required name="email" type="email" autoComplete="email" maxLength={254} style={cssInline(inputS)} /></label>
               <label style={{ display: 'flex', flexDirection: 'column', gap: 6, fontSize: 14, fontWeight: 600 }}>Dog&apos;s name & breed:<input name="dog" style={cssInline(inputS)} /></label>
               <label style={{ display: 'flex', flexDirection: 'column', gap: 6, fontSize: 14, fontWeight: 600 }}>
                 <span>Service interested in: <span style={{ color: '#C62828' }}>*</span></span>

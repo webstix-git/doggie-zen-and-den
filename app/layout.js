@@ -1,5 +1,5 @@
 import './globals.css';
-import GoogleAnalytics from './components/GoogleAnalytics';
+import GoogleAnalytics, { GoogleTagManagerNoScript } from './components/GoogleAnalytics';
 import ScrollTop from './components/ScrollTop';
 import { OG_IMAGE, SITE_DESCRIPTION, SITE_NAME, SITE_URL } from './lib/site';
 
@@ -31,6 +31,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
+        <GoogleTagManagerNoScript />
         {children}
         <ScrollTop />
         <GoogleAnalytics />
