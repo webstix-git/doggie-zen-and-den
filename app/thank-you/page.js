@@ -1,5 +1,12 @@
 import ThankYouPage from '../components/ThankYouPage';
 
+export const metadata = {
+  title: { absolute: 'Thank You | Doggie Zen & Den' },
+  description: 'Thanks for contacting Doggie Zen & Den. We will get in touch with you shortly.',
+  alternates: { canonical: '/thank-you' },
+  robots: { index: false, follow: true },
+};
+
 export default function Page() {
   return (
     <>

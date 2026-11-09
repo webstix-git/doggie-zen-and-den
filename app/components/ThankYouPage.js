@@ -2,6 +2,7 @@
 
 import { El, FacebookIcon, MailIcon, MapPinIcon, PhoneIcon } from './el';
 import LegalLinks from './LegalLinks';
+import MobileMenu from './MobileMenu';
 
 const MAPS_URL = 'https://www.google.com/maps?q=Doggie+Zen+%26+Den,+1805+Granary+St+Unit+10,+Holmen,+WI+54636';
 
@@ -10,26 +11,26 @@ export default function ThankYouPage() {
     <div className="page-thanks">
       <header className="site-header">
         <nav>
-          <a href="index.html" style={{ display: 'flex', alignItems: 'center' }}><img className="site-logo" src="/assets/logo-full-clear.png" alt="Doggie Zen & Den" /></a>
+          <a href="/" style={{ display: 'flex', alignItems: 'center' }}><img className="site-logo" src="/assets/logo-full-clear.png" alt="Doggie Zen & Den" /></a>
           <div className="site-nav">
-            <a href="index.html" style={{ textDecoration: 'none' }}>Home</a>
-            <a href="index.html#about" style={{ textDecoration: 'none' }}>About Us</a>
+            <a href="/#about" style={{ textDecoration: 'none' }}>About Us</a>
             <div className="nav-drop">
-              <a href="index.html#services">Our Services <span aria-hidden="true" style={{ fontSize: '0.75em' }}>▾</span></a>
+              <a href="/#services">Our Services <span aria-hidden="true" style={{ fontSize: '0.75em' }}>▾</span></a>
               <div className="nav-drop-menu">
                 <div className="nav-drop-menu-inner">
-                  <a href="index.html#services">Grooming</a>
-                  <a href="index.html#services">Boarding</a>
+                  <a href="/#services">Grooming</a>
+                  <a href="/#services">Boarding</a>
                 </div>
               </div>
             </div>
-            <a href="index.html#why" style={{ textDecoration: 'none' }}>Why Choose Us</a>
-            <a href="index.html#gallery" style={{ textDecoration: 'none' }}>Gallery</a>
-            <a href="index.html#reviews" style={{ textDecoration: 'none' }}>Testimonials</a>
-            <a href="index.html#faq" style={{ textDecoration: 'none' }}>FAQ</a>
-            <a href="index.html#contact" style={{ textDecoration: 'none' }}>Contact Us</a>
+            <a href="/#why" style={{ textDecoration: 'none' }}>Why Choose Us</a>
+            <a href="/#gallery" style={{ textDecoration: 'none' }}>Gallery</a>
+            <a href="/#reviews" style={{ textDecoration: 'none' }}>Testimonials</a>
+            <a href="/#faq" style={{ textDecoration: 'none' }}>FAQs</a>
+            <a href="/#contact" style={{ textDecoration: 'none' }}>Contact Us</a>
             <El tag="a" className="site-phone" href="tel:6083172961" s="text-decoration:none;background:#E99025;color:#29262B;border-radius:999px;font-weight:700;white-space:nowrap;display:inline-flex;align-items:center;gap:8px" hover="background:#29262B;color:#FFFFFF"><PhoneIcon />608-317-2961</El>
           </div>
+          <MobileMenu base="/" />
         </nav>
       </header>
 
@@ -43,7 +44,7 @@ export default function ThankYouPage() {
 
       <footer style={{ background: '#29262B', color: '#FFFFFF', borderTop: '1px solid rgba(233,229,223,0.35)' }}>
         <div style={{ maxWidth: 1280, margin: '0 auto', padding: '56px clamp(20px,4vw,48px) 28px', display: 'flex', flexDirection: 'column', gap: 40 }}>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(min(100%,220px),1fr))', gap: 'clamp(32px,4vw,56px)', alignItems: 'flex-start' }}>
+          <div className="footer-grid" style={{ display: 'grid', gap: 'clamp(32px,4vw,56px)', alignItems: 'flex-start' }}>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 14, maxWidth: 320 }}>
               <img src="/assets/logo-full-white.png" alt="Doggie Zen & Den" style={{ height: 97, width: 184, display: 'block', objectFit: 'contain', objectPosition: 'left center' }} />
               <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
@@ -57,20 +58,15 @@ export default function ThankYouPage() {
             </div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 12, justifySelf: 'center' }}>
               <div style={{ fontSize: 13, fontWeight: 800, letterSpacing: '0.12em', color: '#E99025' }}>QUICK LINKS</div>
-              <div style={{ display: 'flex', gap: 'clamp(28px,4vw,48px)' }}>
-                <div style={{ display: 'flex', flexDirection: 'column', gap: 10, fontSize: 16, fontWeight: 600 }}>
-                  <a href="index.html" style={{ color: '#FFFFFF' }}>Home</a>
-                  <a href="index.html#about" style={{ color: '#FFFFFF' }}>About Us</a>
-                  <a href="index.html#services" style={{ color: '#FFFFFF' }}>Our services</a>
-                  <a href="index.html#why" style={{ color: '#FFFFFF' }}>Why choose us</a>
-                </div>
-                <div style={{ display: 'flex', flexDirection: 'column', gap: 10, fontSize: 16, fontWeight: 600 }}>
-                  <a href="index.html#gallery" style={{ color: '#FFFFFF' }}>Gallery</a>
-                  <a href="index.html#reviews" style={{ color: '#FFFFFF' }}>Testimonials</a>
-                  <a href="index.html#faq" style={{ color: '#FFFFFF' }}>FAQ</a>
-                  <a href="index.html#contact" style={{ color: '#FFFFFF' }}>Contact Us</a>
-                </div>
-              </div>
+              <nav aria-label="Quick links" style={{ display: 'flex', flexDirection: 'column', gap: 10, fontSize: 16, fontWeight: 600 }}>
+                <a href="/#about" style={{ color: '#FFFFFF' }}>About Us</a>
+                <a href="/#services" style={{ color: '#FFFFFF' }}>Our Services</a>
+                <a href="/#why" style={{ color: '#FFFFFF' }}>Why Choose Us</a>
+                <a href="/#gallery" style={{ color: '#FFFFFF' }}>Gallery</a>
+                <a href="/#reviews" style={{ color: '#FFFFFF' }}>Testimonials</a>
+                <a href="/#faq" style={{ color: '#FFFFFF' }}>FAQs</a>
+                <a href="/#contact" style={{ color: '#FFFFFF' }}>Contact Us</a>
+              </nav>
             </div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 12, justifySelf: 'end' }}>
               <div style={{ fontSize: 13, fontWeight: 800, letterSpacing: '0.12em', color: '#E99025' }}>CONTACT</div>

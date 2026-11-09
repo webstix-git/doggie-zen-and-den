@@ -1,9 +1,11 @@
 import InfoPage, { DocHeading } from '../components/InfoPage';
+import { pageMetadata } from '../lib/site';
 
-export const metadata = {
+export const metadata = pageMetadata({
   title: 'AI Policy | Doggie Zen & Den',
   description: 'How Doggie Zen & Den uses artificial intelligence, and the decisions our team still makes about your dog.',
-};
+  path: '/ai-policy',
+});
 
 const list = { margin: '10px 0 0', paddingLeft: 22 };
 
@@ -13,7 +15,7 @@ export default function Page() {
       <link rel="preconnect" href="https://fonts.googleapis.com" />
       <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
       <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,400..900&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet" />
-      <InfoPage title="AI Policy" lede="How we use artificial intelligence, and the decisions our team still makes about your dog." updated="October 23, 2026">
+      <InfoPage title="AI Policy" path="/ai-policy" lede="How we use artificial intelligence, and the decisions our team still makes about your dog." updated="October 23, 2026">
         <DocHeading>Our approach</DocHeading>
         <p>Doggie Zen & Den is a hands-on grooming and boarding business. The care your dog receives is decided by our team. We may use artificial intelligence (AI) tools to help with some office and website work. People stay in charge of every decision about your dog.</p>
         <DocHeading>How we use AI</DocHeading>
@@ -35,7 +37,7 @@ export default function Page() {
         <DocHeading>Your information and AI tools</DocHeading>
         <p>We do not enter our customers’ personal information, such as names, phone numbers, or addresses, into public AI tools. See our <a href="/privacy-policy" style={{ fontWeight: 700 }}>Privacy Policy</a> for how we handle your information.</p>
         <DocHeading>AI assistants and our website</DocHeading>
-        <p>Search engines and AI assistants may read the public pages of our website. To help them describe our business accurately, we publish an <a href="/ai-readiness" style={{ fontWeight: 700 }}>AI Readiness</a> page with a plain summary of who we are and what we do.</p>
+        <p>Search engines and AI assistants may read the public pages of our website. To help them describe our business accurately, we publish an <a href="/ai-readiness" style={{ fontWeight: 700 }}>AI Readiness Service Index</a> page with a plain summary of who we are and what we do.</p>
         <DocHeading>Changes to this policy</DocHeading>
         <p>We will update this policy if the way we use AI changes. The date at the top of this page shows when it was last changed.</p>
         <DocHeading>Questions</DocHeading>

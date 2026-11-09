@@ -1,9 +1,11 @@
 import InfoPage, { DocHeading } from '../components/InfoPage';
+import { pageMetadata } from '../lib/site';
 
-export const metadata = {
+export const metadata = pageMetadata({
   title: 'Privacy Policy | Doggie Zen & Den',
   description: 'How Doggie Zen & Den collects, uses, and protects the information you share when you visit our website or book grooming and boarding.',
-};
+  path: '/privacy-policy',
+});
 
 const list = { margin: '10px 0 0', paddingLeft: 22 };
 
@@ -13,7 +15,7 @@ export default function Page() {
       <link rel="preconnect" href="https://fonts.googleapis.com" />
       <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
       <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,400..900&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet" />
-      <InfoPage title="Privacy Policy" lede="How we collect, use, and protect the information you share with us." updated="October 23, 2026">
+      <InfoPage title="Privacy Policy" path="/privacy-policy" lede="How we collect, use, and protect the information you share with us." updated="October 23, 2026">
         <DocHeading>Overview</DocHeading>
         <p>Doggie Zen & Den (“we,” “us,” or “our”) respects your privacy. This policy explains what information we collect when you visit our website, contact us, or book grooming or boarding, how we use it, and the choices you have.</p>
         <DocHeading>Information we collect</DocHeading>

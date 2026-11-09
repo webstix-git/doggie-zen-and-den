@@ -1,9 +1,11 @@
 import InfoPage, { DocHeading } from '../components/InfoPage';
+import { pageMetadata } from '../lib/site';
 
-export const metadata = {
-  title: 'AI Readiness | Doggie Zen & Den',
+export const metadata = pageMetadata({
+  title: 'AI Readiness Service Index | Doggie Zen & Den',
   description: 'A plain summary of Doggie Zen & Den for search engines and AI assistants: who we are, where we are, and the grooming and boarding we offer.',
-};
+  path: '/ai-readiness',
+});
 
 const rowLabel = { fontWeight: 800, color: '#14183A' };
 const list = { margin: '10px 0 0', paddingLeft: 22 };
@@ -23,7 +25,7 @@ export default function Page() {
       <link rel="preconnect" href="https://fonts.googleapis.com" />
       <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
       <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,400..900&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet" />
-      <InfoPage title="AI Readiness" lede="A plain summary of Doggie Zen & Den so search engines and AI assistants can describe the business accurately." updated="October 23, 2026">
+      <InfoPage title="AI Readiness Service Index" path="/ai-readiness" lede="A plain summary of Doggie Zen & Den so search engines and AI assistants can describe the business accurately." updated="November 9, 2026">
         <DocHeading>Business profile</DocHeading>
         <Row label="Business name">Doggie Zen & Den</Row>
         <Row label="Business type">Professional dog grooming and personalized boarding</Row>
@@ -48,13 +50,13 @@ export default function Page() {
         <DocHeading>Key pages</DocHeading>
         <ul style={list}>
           <li><a href="/" style={{ fontWeight: 700 }}>Home</a></li>
-          <li><a href="/#about" style={{ fontWeight: 700 }}>About</a></li>
-          <li><a href="/#services" style={{ fontWeight: 700 }}>Services</a></li>
-          <li><a href="/#why" style={{ fontWeight: 700 }}>Why us</a></li>
+          <li><a href="/#about" style={{ fontWeight: 700 }}>About Us</a></li>
+          <li><a href="/#services" style={{ fontWeight: 700 }}>Our Services</a></li>
+          <li><a href="/#why" style={{ fontWeight: 700 }}>Why Choose Us</a></li>
           <li><a href="/#gallery" style={{ fontWeight: 700 }}>Gallery</a></li>
-          <li><a href="/#reviews" style={{ fontWeight: 700 }}>Reviews</a></li>
-          <li><a href="/#faq" style={{ fontWeight: 700 }}>FAQ</a></li>
-          <li><a href="/#contact" style={{ fontWeight: 700 }}>Contact</a></li>
+          <li><a href="/#reviews" style={{ fontWeight: 700 }}>Testimonials</a></li>
+          <li><a href="/#faq" style={{ fontWeight: 700 }}>FAQs</a></li>
+          <li><a href="/#contact" style={{ fontWeight: 700 }}>Contact Us</a></li>
           <li><a href="/privacy-policy" style={{ fontWeight: 700 }}>Privacy Policy</a></li>
           <li><a href="/ai-policy" style={{ fontWeight: 700 }}>AI Policy</a></li>
         </ul>

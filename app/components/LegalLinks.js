@@ -8,7 +8,7 @@ export default function LegalLinks() {
       <span aria-hidden="true" style={ruleStyle} />
       <a href="/ai-policy" style={linkStyle}>AI Policy</a>
       <span aria-hidden="true" style={ruleStyle} />
-      <a href="/ai-readiness" style={linkStyle}>AI Readiness</a>
+      <a href="/ai-readiness" style={linkStyle}>AI Readiness Service Index</a>
     </nav>
   );
 }
