@@ -16,9 +16,9 @@ const GROOM = ['Bath', 'Hair trim', 'Nails', 'Ears', 'Teeth', 'Glands'];
 const BOARD = ['Senior dogs', 'Anxious dogs', 'Unique needs'];
 const REASONS = [
   { n: '1', title: <><span style={{ whiteSpace: 'nowrap' }}>Compassionate,</span><br /><span style={{ whiteSpace: 'nowrap' }}>patient care</span></>, body: 'Especially for anxious, nervous, or difficult-to-groom dogs.' },
-  { n: '2', title: <>Experienced, trusted{'\u00A0'}groomers</>, body: 'Clients ask for their groomer by name and stay with them for\u00A0years.' },
+  { n: '2', title: <>Experienced, <span className="keep">trusted groomers</span></>, body: 'Clients ask for their groomer by name and stay with them for\u00A0years.' },
   { n: '3', title: <>Excellent<br /><span style={{ whiteSpace: 'nowrap' }}>grooming results</span></>, body: 'Dogs come home looking, smelling, and feeling\u00A0great.' },
-  { n: '4', title: <>Friendly, personalized{'\u00A0'}service</>, body: 'Clear communication, flexibility, and attention to individual\u00A0needs.' },
+  { n: '4', title: <>Friendly, <span className="keep">personalized service</span></>, body: 'Clear communication, flexibility, and attention to individual\u00A0needs.' },
   { n: '5', title: 'Fair pricing', body: 'Quality care at reasonable\u00A0prices.' },
 ];
 const REVIEWS = [
@@ -208,7 +208,7 @@ export default function HomePage() {
 
       <section id="about" data-screen-label="About" style={{ maxWidth: 1280, margin: '0 auto', padding: 'clamp(72px,10vw,140px) clamp(20px,4vw,48px)', display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(min(100%,440px),1fr))', gap: 'clamp(48px,7vw,104px)', alignItems: 'center' }}>
         <div data-reveal="" style={{ position: 'relative', paddingBottom: '12%' }}>
-          <img src="/assets/sign-wood.webp" alt="The Doggie Zen & Den sign on a reclaimed wood wall" width={1360} height={1020} loading="lazy" decoding="async" style={{ width: '88%', aspectRatio: '4/4.2', objectFit: 'cover', objectPosition: '50% 25%', borderRadius: 32, display: 'block' }} />
+          <img src="/assets/sign-wood.webp" alt="The Doggie Zen & Den sign on a reclaimed wood wall" width={1360} height={1020} loading="lazy" decoding="async" style={{ width: '88%', height: 'auto', aspectRatio: '4/4.2', objectFit: 'cover', objectPosition: '50% 25%', borderRadius: 32, display: 'block' }} />
           <div style={{ position: 'absolute', right: 0, bottom: 0, width: '50%', aspectRatio: '1/1', borderRadius: 28, overflow: 'hidden', border: '8px solid #E9E5DF', boxShadow: '0 30px 60px -24px rgba(41,38,43,0.5)' }}>
             <img src="/images/862431484_1442652258037121_8866427928447707797_n.jpg" alt="Freshly groomed dog on the salon table" width={881} height={1024} loading="lazy" decoding="async" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: '50% 58%', display: 'block' }} />
           </div>
@@ -280,7 +280,7 @@ export default function HomePage() {
           <div data-reveal="" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(min(100%,420px),1fr))', gap: 32, alignItems: 'end' }}>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 16, maxWidth: 520 }}>
               <div className="eyebrow" style={{ fontFamily: "'Caveat Brush',cursive", fontSize: 32, color: '#80644F', lineHeight: 1 }}>Why Choose Us</div>
-              <h2 style={{ margin: 0, fontFamily: "'Archivo',sans-serif", fontVariationSettings: "'wdth' 112", fontWeight: 800, fontSize: 'clamp(32px,3.8vw,48px)', lineHeight: 1.08, letterSpacing: '-0.02em', maxWidth: '14ch' }}>Why dog owners trust us with their pets.</h2>
+              <h2 className="why-title" style={{ margin: 0, fontFamily: "'Archivo',sans-serif", fontVariationSettings: "'wdth' 112", fontWeight: 800, fontSize: 'clamp(32px,3.8vw,48px)', lineHeight: 1.08, letterSpacing: '-0.02em', maxWidth: '14ch' }}>Why dog owners trust us with their pets.</h2>
             </div>
             <p style={{ margin: 0, fontSize: 18, lineHeight: 1.65, color: '#656268' }}>Many of our clients bring dogs that struggled with grooming elsewhere and found a positive experience here. These are the things they tell us matter most.</p>
           </div>
@@ -292,12 +292,12 @@ export default function HomePage() {
                 <span style={{ fontSize: 13, lineHeight: 1.35, fontWeight: 600, textWrap: 'pretty' }}>Clients follow their groomer by name for{'\u00A0'}years.</span>
               </div>
             </div>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, minmax(0, 1fr))', gap: 16, minWidth: 0 }}>
+            <div className="why-cards" style={{ display: 'grid', gridTemplateColumns: 'repeat(2, minmax(0, 1fr))', gap: 16, minWidth: 0 }}>
               {REASONS.map((r) => (
-                <El key={r.n} data-reveal="" s="background:#FFFFFF;border-radius:28px;padding:22px;display:flex;flex-direction:column;gap:12px;width:100%;min-width:0;box-sizing:border-box;transition:transform .4s ease" hover="transform:translateY(-4px);box-shadow:0 24px 50px -28px rgba(41,38,43,0.4)">
+                <El key={r.n} className="why-card" data-reveal="" s="background:#FFFFFF;border-radius:28px;padding:22px;display:flex;flex-direction:column;gap:12px;width:100%;min-width:0;box-sizing:border-box;transition:transform .4s ease" hover="transform:translateY(-4px);box-shadow:0 24px 50px -28px rgba(41,38,43,0.4)">
                   <div style={{ display: 'flex', alignItems: 'flex-start', gap: 12, minWidth: 0 }}>
                     <span style={{ width: 44, height: 44, flex: 'none', borderRadius: 14, background: '#E99025', display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: "'Archivo',sans-serif", fontVariationSettings: "'wdth' 120", fontWeight: 850, fontSize: 18, color: '#29262B' }}>{r.n}</span>
-                    <div style={{ fontFamily: "'Archivo',sans-serif", fontVariationSettings: "'wdth' 108", fontWeight: 800, fontSize: 18, lineHeight: 1.25, minWidth: 0, textWrap: 'pretty' }}>{r.title}</div>
+                    <div className="why-card-title" style={{ fontFamily: "'Archivo',sans-serif", fontVariationSettings: "'wdth' 108", fontWeight: 800, fontSize: 18, lineHeight: 1.25, minWidth: 0, textWrap: 'pretty' }}>{r.title}</div>
                   </div>
                   <div style={{ fontSize: 15, lineHeight: 1.55, color: '#656268', textWrap: 'pretty' }}>{r.body}</div>
                 </El>
@@ -402,9 +402,9 @@ export default function HomePage() {
             <div className="eyebrow" style={{ fontFamily: "'Caveat Brush',cursive", fontSize: 32, color: '#E99025', lineHeight: 1 }}>Contact</div>
             <h2 style={{ margin: 0, fontFamily: "'Archivo',sans-serif", fontVariationSettings: "'wdth' 120", fontWeight: 850, fontSize: 'clamp(42px,5.4vw,76px)', lineHeight: 0.92, letterSpacing: '-0.025em', textTransform: 'uppercase' }}>Schedule your dog&apos;s next visit.</h2>
             <p style={{ margin: 0, fontSize: 18, lineHeight: 1.6, color: '#d6d2cc', maxWidth: 480 }}>Contact us to schedule your dog&apos;s next grooming appointment or inquire about boarding.</p>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(210px,1fr))', gap: 12 }}>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(min(100%,250px),1fr))', gap: 12 }}>
               <El tag="a" href="tel:6083172961" s="text-decoration:none;color:#FFFFFF;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);border-radius:20px;padding:18px 20px;display:flex;flex-direction:column;gap:6px" hover="background:rgba(233,144,37,0.16);color:#FFFFFF"><span style={{ fontSize: 12, letterSpacing: '0.12em', color: '#E99025', fontWeight: 800 }}>CALL</span><span style={{ fontSize: 19, fontWeight: 700 }}>608-317-2961</span></El>
-              <El tag="a" href="mailto:zenandden@gmail.com" s="text-decoration:none;color:#FFFFFF;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);border-radius:20px;padding:18px 20px;display:flex;flex-direction:column;gap:6px" hover="background:rgba(233,144,37,0.16);color:#FFFFFF"><span style={{ fontSize: 12, letterSpacing: '0.12em', color: '#E99025', fontWeight: 800 }}>EMAIL</span><span style={{ fontSize: 19, fontWeight: 700 }}>zenandden@gmail.com</span></El>
+              <El tag="a" href="mailto:zenandden@gmail.com" s="text-decoration:none;color:#FFFFFF;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);border-radius:20px;padding:18px 20px;display:flex;flex-direction:column;gap:6px" hover="background:rgba(233,144,37,0.16);color:#FFFFFF"><span style={{ fontSize: 12, letterSpacing: '0.12em', color: '#E99025', fontWeight: 800 }}>EMAIL</span><span style={{ fontSize: 19, fontWeight: 700 }}>zenandden<wbr />@gmail.com</span></El>
               <div style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.12)', borderRadius: 20, padding: '18px 20px', display: 'flex', flexDirection: 'column', gap: 6 }}><span style={{ fontSize: 12, letterSpacing: '0.12em', color: '#E99025', fontWeight: 800 }}>VISIT</span><span style={{ fontSize: 17, lineHeight: 1.45 }}>1805 Granary St.<br />Unit 10<br />Holmen, WI 54636</span></div>
               <div style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.12)', borderRadius: 20, padding: '18px 20px', display: 'flex', flexDirection: 'column', gap: 6 }}><span style={{ fontSize: 12, letterSpacing: '0.12em', color: '#E99025', fontWeight: 800 }}>SERVING</span><span style={{ fontSize: 17, lineHeight: 1.45 }}>Holmen, Onalaska, La Crosse & a 20-mile radius</span></div>
             </div>

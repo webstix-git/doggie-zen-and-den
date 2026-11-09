@@ -10,7 +10,15 @@ select{cursor:pointer}
 .page-home a{color:#29262B;text-decoration-color:#E99025;text-underline-offset:3px}
 .page-home a:hover{color:#80644F}
 ::selection{background:#E99025;color:#29262B}
-.footer-grid{grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr))}
+.footer-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+@media (max-width:899px){
+  .footer-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .footer-grid > :first-child{grid-column:1 / -1}
+  .footer-grid > *{justify-self:start !important}
+}
+@media (max-width:520px){
+  .footer-grid{grid-template-columns:minmax(0,1fr)}
+}
 footer a{text-decoration:none;text-underline-offset:3px;transition:color .2s ease,text-decoration-color .2s ease}
 footer a:hover{text-decoration:underline;text-decoration-color:#E99025;color:#E99025}
 .eyebrow{text-transform:capitalize}
@@ -51,8 +59,22 @@ header.site-header .nav-drop-menu a:hover{background:#E9E5DF;color:#29262B}
 @media (min-width:900px){
   #holiday-grid{grid-template-columns:minmax(260px,0.88fr) minmax(480px,1.28fr) !important}
 }
-@media (max-width:800px){
+@media (max-width:1180px){
   #why-grid{grid-template-columns:1fr !important}
+}
+@media (max-width:700px){
+  #why-grid .why-cards{grid-template-columns:1fr !important}
+}
+@media (max-width:1000px){
+  #why .why-title{max-width:none !important;text-wrap:balance}
+}
+#why-grid .why-card-title .keep{white-space:nowrap}
+@media (max-width:400px){
+  #why-grid .why-card{padding:18px !important}
+  #why-grid .why-card-title{font-size:16px !important}
+}
+@media (max-width:360px){
+  #why-grid .why-card-title .keep{white-space:normal}
 }
 header.site-header.is-stuck .site-phone svg{width:14px;height:14px}
 
