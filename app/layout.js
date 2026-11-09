@@ -19,7 +19,7 @@ export const metadata = {
     images: [{ url: OG_IMAGE, width: 1440, height: 1080, alt: 'Groomers at work in the Doggie Zen & Den salon' }],
   },
   twitter: { card: 'summary_large_image', title: DEFAULT_TITLE, description: SITE_DESCRIPTION, images: [OG_IMAGE] },
-  ...(process.env.GOOGLE_SITE_VERIFICATION ? { verification: { google: process.env.GOOGLE_SITE_VERIFICATION } } : null),
+  verification: { google: process.env.GOOGLE_SITE_VERIFICATION || 'Y2UjoxjE7nUMnBnOroE8tJztcEYeUpn6StYcAiMoBrs' },
 };
 
 export const viewport = {
