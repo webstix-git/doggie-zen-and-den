@@ -9,7 +9,7 @@ import Turnstile from './Turnstile';
 
 const STATS = [
   { v: '10', l: 'years in business' },
-  { v: '20 mi', l: 'service radius' },
+  { v: '3', l: 'communities served' },
 ];
 const MAPS_URL = 'https://www.google.com/maps?q=Doggie+Zen+%26+Den,+1805+Granary+St+Unit+10,+Holmen,+WI+54636';
 const GROOM = ['Bath', 'Hair trim', 'Nails', 'Ears', 'Teeth', 'Glands'];
@@ -24,7 +24,7 @@ const REASONS = [
 const REVIEWS = [
   { quote: 'Kim and the staff take such great care of our 2 beagles when they get groomed! They have anxiety, and she shows them love when we get there and always tells me how they were. They have a genuine love for animals.', name: 'Google review', source: 'August 2024' },
   { quote: 'Love this place. Everyone is welcoming, happy, they treat my pets like their own. Great job grooming. We have been going to Kim for many years. Highly recommend.', name: 'Google review', source: 'January 2024' },
-  { quote: 'Friendly and welcoming staff. Grooming service by Addison was great! Our puppy did awesome and looks awesome! Handsome boy!', name: 'Google review', source: 'July 2023' },
+  { quote: "Willow's first time coming to Doggie Zen And Den was amazing. Our puppy looks so cute. We would recommend them 100% and they have a repeat customer. The prices were very reasonable and they made us feel so comfortable. They have amazing communication and are all very friendly. Thank you so much.", name: 'Google review', source: 'February 2023' },
 ];
 const SVC = ['Grooming', 'Boarding', 'Both'];
 const SHOTS = [
@@ -238,7 +238,7 @@ export default function HomePage() {
           <div data-reveal="" style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: 18, maxWidth: 720 }}>
             <div className="eyebrow" style={{ fontFamily: "'Caveat Brush',cursive", fontSize: 32, color: '#80644F', lineHeight: 1 }}>Our services</div>
             <h2 style={{ margin: 0, fontFamily: "'Archivo',sans-serif", fontVariationSettings: "'wdth' 114", fontWeight: 800, fontSize: 'clamp(36px,4.4vw,60px)', lineHeight: 1, letterSpacing: '-0.02em' }}>Full pet care under one roof.</h2>
-            <p style={{ margin: 0, maxWidth: 520, fontSize: 17, lineHeight: 1.6, color: '#4a474d' }}>One-time visits or a regular schedule. Book a single groom, a boarding stay, or both.</p>
+            <p style={{ margin: 0, maxWidth: 520, fontSize: 17, lineHeight: 1.6, color: '#4a474d' }}>One-time visits or a regular schedule. Book a single groom, pet sitting, or both.</p>
           </div>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(min(100%,460px),1fr))', gap: 24 }}>
             <article data-reveal="" style={{ background: '#29262B', color: '#FFFFFF', borderRadius: 32, overflow: 'hidden', display: 'flex', flexDirection: 'column', position: 'relative' }}>
@@ -314,9 +314,8 @@ export default function HomePage() {
             <div data-reveal="" style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
               <div style={{ alignSelf: 'flex-start', background: '#FFFFFF', color: '#29262B', borderRadius: 999, padding: '8px 16px', fontSize: 13, fontWeight: 800, letterSpacing: '0.12em' }}>HOLIDAY SPECIAL</div>
               <h2 style={{ margin: 0, fontFamily: "'Archivo',sans-serif", fontVariationSettings: "'wdth' 118", fontWeight: 850, fontSize: 'clamp(40px,5.4vw,76px)', lineHeight: 0.95, letterSpacing: '-0.025em' }}>Our holiday offer for your pup.</h2>
-              <p style={{ margin: 0, fontSize: 19, lineHeight: 1.55, maxWidth: 440, fontWeight: 600 }}>Press play to see this season&apos;s offer, then call or message us to reserve your spot.</p>
+              <p style={{ margin: 0, fontSize: 19, lineHeight: 1.55, maxWidth: 440, fontWeight: 600 }}>Press play to see this season&apos;s offer, then message us to reserve your spot.</p>
               <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
-                <El tag="a" href="tel:6083172961" s="text-decoration:none;background:#29262B;color:#FFFFFF;padding:18px 28px;border-radius:999px;font-weight:800;font-size:17px" hover="background:#FFFFFF;color:#29262B">Call 608-317-2961</El>
                 <El tag="a" href="https://www.facebook.com/doggiezenandden" target="_blank" rel="noopener" s="text-decoration:none;background:#FFFFFF;color:#29262B;padding:18px 26px;border-radius:999px;font-weight:800;font-size:17px" hover="background:#29262B;color:#FFFFFF">Message on Facebook</El>
               </div>
             </div>
@@ -403,10 +402,9 @@ export default function HomePage() {
             <h2 style={{ margin: 0, fontFamily: "'Archivo',sans-serif", fontVariationSettings: "'wdth' 120", fontWeight: 850, fontSize: 'clamp(42px,5.4vw,76px)', lineHeight: 0.92, letterSpacing: '-0.025em', textTransform: 'uppercase' }}>Schedule your dog&apos;s next visit.</h2>
             <p style={{ margin: 0, fontSize: 18, lineHeight: 1.6, color: '#d6d2cc', maxWidth: 480 }}>Contact us to schedule your dog&apos;s next grooming appointment or inquire about boarding.</p>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(min(100%,250px),1fr))', gap: 12 }}>
-              <El tag="a" href="tel:6083172961" s="text-decoration:none;color:#FFFFFF;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);border-radius:20px;padding:18px 20px;display:flex;flex-direction:column;gap:6px" hover="background:rgba(233,144,37,0.16);color:#FFFFFF"><span style={{ fontSize: 12, letterSpacing: '0.12em', color: '#E99025', fontWeight: 800 }}>CALL</span><span style={{ fontSize: 19, fontWeight: 700 }}>608-317-2961</span></El>
               <El tag="a" href="mailto:zenandden@gmail.com" s="text-decoration:none;color:#FFFFFF;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);border-radius:20px;padding:18px 20px;display:flex;flex-direction:column;gap:6px" hover="background:rgba(233,144,37,0.16);color:#FFFFFF"><span style={{ fontSize: 12, letterSpacing: '0.12em', color: '#E99025', fontWeight: 800 }}>EMAIL</span><span style={{ fontSize: 19, fontWeight: 700 }}>zenandden<wbr />@gmail.com</span></El>
               <div style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.12)', borderRadius: 20, padding: '18px 20px', display: 'flex', flexDirection: 'column', gap: 6 }}><span style={{ fontSize: 12, letterSpacing: '0.12em', color: '#E99025', fontWeight: 800 }}>VISIT</span><span style={{ fontSize: 17, lineHeight: 1.45 }}>1805 Granary St.<br />Unit 10<br />Holmen, WI 54636</span></div>
-              <div style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.12)', borderRadius: 20, padding: '18px 20px', display: 'flex', flexDirection: 'column', gap: 6 }}><span style={{ fontSize: 12, letterSpacing: '0.12em', color: '#E99025', fontWeight: 800 }}>SERVING</span><span style={{ fontSize: 17, lineHeight: 1.45 }}>Holmen, Onalaska, La Crosse & a 20-mile radius</span></div>
+              <div style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.12)', borderRadius: 20, padding: '18px 20px', display: 'flex', flexDirection: 'column', gap: 6 }}><span style={{ fontSize: 12, letterSpacing: '0.12em', color: '#E99025', fontWeight: 800 }}>SERVING</span><span style={{ fontSize: 17, lineHeight: 1.45 }}>Holmen, Onalaska, and La Crosse</span></div>
             </div>
           </div>
           <div data-reveal="" style={{ background: '#E9E5DF', color: '#29262B', borderRadius: 32, padding: 'clamp(26px,3.6vw,44px)', boxShadow: '0 40px 80px -40px rgba(0,0,0,0.8)' }}>
@@ -479,7 +477,6 @@ export default function HomePage() {
             <div style={{ display: 'flex', flexDirection: 'column', gap: 12, justifySelf: 'end' }}>
               <div style={{ fontSize: 13, fontWeight: 800, letterSpacing: '0.12em', color: '#E99025' }}>CONTACT</div>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 14, fontSize: 16, fontWeight: 600, lineHeight: 1.45 }}>
-                <a href="tel:6083172961" style={{ color: '#FFFFFF', display: 'inline-flex', alignItems: 'center', gap: 10 }}><PhoneIcon size={18} /><span>608-317-2961</span></a>
                 <a href={MAPS_URL} target="_blank" rel="noopener" style={{ color: '#FFFFFF', display: 'inline-flex', alignItems: 'flex-start', gap: 10, fontWeight: 600 }}>
                   <span style={{ marginTop: 2 }}><MapPinIcon size={18} /></span>
                   <span>1805 Granary St.<br />Unit 10<br />Holmen, WI 54636</span>

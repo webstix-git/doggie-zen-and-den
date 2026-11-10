@@ -71,7 +71,6 @@ export default function ThankYouPage() {
             <div style={{ display: 'flex', flexDirection: 'column', gap: 12, justifySelf: 'end' }}>
               <div style={{ fontSize: 13, fontWeight: 800, letterSpacing: '0.12em', color: '#E99025' }}>CONTACT</div>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 14, fontSize: 16, fontWeight: 600, lineHeight: 1.45 }}>
-                <a href="tel:6083172961" style={{ color: '#FFFFFF', display: 'inline-flex', alignItems: 'center', gap: 10 }}><PhoneIcon size={18} /><span>608-317-2961</span></a>
                 <a href={MAPS_URL} target="_blank" rel="noopener" style={{ color: '#FFFFFF', display: 'inline-flex', alignItems: 'flex-start', gap: 10, fontWeight: 600 }}>
                   <span style={{ marginTop: 2 }}><MapPinIcon size={18} /></span>
                   <span>1805 Granary St.<br />Unit 10<br />Holmen, WI 54636</span>
