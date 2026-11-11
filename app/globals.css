@@ -120,8 +120,8 @@ body:has(.page-thanks){background:#FFFFFF;color:#14183A}
 .legal-prose a{color:#29262B;font-weight:700;text-decoration-color:#E99025;text-underline-offset:3px}
 .legal-prose a:hover{color:#80644F}
 .legal-back{margin-top:56px}
-.legal-back a{color:#E99025;font-weight:700;font-size:16px;text-decoration:none}
-.legal-back a:hover{color:#29262B}
+.legal-back a{display:inline-flex;align-items:center;color:#29262B;font-weight:700;font-size:16px;text-decoration:none;padding:12px 22px;border-radius:999px;border:1.5px solid #29262B;background:transparent}
+.legal-back a:hover{color:#FFFFFF;background:#29262B;border-color:#29262B}
 
 .nf{flex:1;display:flex;justify-content:center;background:#E9E5DF url('/assets/paw-pattern.svg') repeat;background-size:560px 560px;padding:clamp(40px,7vw,88px) clamp(20px,4vw,48px) clamp(72px,10vw,120px)}
 .nf-wrap{width:100%;max-width:720px;display:flex;flex-direction:column}

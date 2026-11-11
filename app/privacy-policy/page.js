@@ -1,5 +1,5 @@
 import InfoPage, { DocHeading } from '../components/InfoPage';
-import { pageMetadata } from '../lib/site';
+import { BUSINESS, pageMetadata } from '../lib/site';
 
 export const metadata = pageMetadata({
   title: 'Privacy Policy | Doggie Zen & Den',
@@ -51,8 +51,10 @@ export default function Page() {
         <DocHeading>Contact us</DocHeading>
         <p>
           <strong>Doggie Zen & Den</strong><br />
-          1805 Granary St., Unit 10<br />
-          Holmen, WI 54636<br />
+          <a href={BUSINESS.maps} target="_blank" rel="noopener" style={{ fontWeight: 700 }}>
+            1805 Granary St., Unit 10<br />
+            Holmen, WI 54636
+          </a><br />
           Phone: <a href="tel:6083993500" style={{ fontWeight: 700 }}>608-399-3500</a><br />
           Email: <a href="mailto:zenandden@gmail.com" style={{ fontWeight: 700 }}>zenandden@gmail.com</a>
         </p>
