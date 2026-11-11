@@ -21,7 +21,6 @@ export const PAGES = [
   { path: '/privacy-policy', changeFrequency: 'yearly', priority: 0.3 },
   { path: '/ai-policy', changeFrequency: 'yearly', priority: 0.3 },
   { path: '/ai-readiness', changeFrequency: 'monthly', priority: 0.5 },
-  { path: '/service-index', changeFrequency: 'monthly', priority: 0.5 },
 ];
 
 export function pageMetadata({ title, description, path }) {

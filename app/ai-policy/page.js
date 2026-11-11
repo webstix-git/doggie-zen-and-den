@@ -37,7 +37,7 @@ export default function Page() {
         <DocHeading>Your information and AI tools</DocHeading>
         <p>We do not enter our customers’ personal information, such as names, phone numbers, or addresses, into public AI tools. See our <a href="/privacy-policy" style={{ fontWeight: 700 }}>Privacy Policy</a> for how we handle your information.</p>
         <DocHeading>AI assistants and our website</DocHeading>
-        <p>Search engines and AI assistants may read the public pages of our website. To help them describe our business accurately, we publish an <a href="/ai-readiness" style={{ fontWeight: 700 }}>AI Readiness</a> page and a <a href="/service-index" style={{ fontWeight: 700 }}>Service Index</a> with a plain summary of who we are and what we do.</p>
+        <p>Search engines and AI assistants may read the public pages of our website. To help them describe our business accurately, we publish an <a href="/ai-readiness" style={{ fontWeight: 700 }}>AI Readiness Service Index</a> page with a plain summary of who we are and what we do.</p>
         <DocHeading>Changes to this policy</DocHeading>
         <p>We will update this policy if the way we use AI changes. The date at the top of this page shows when it was last changed.</p>
         <DocHeading>Questions</DocHeading>
