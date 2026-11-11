@@ -28,7 +28,7 @@ export default function ThankYouPage() {
             <a href="/#reviews" style={{ textDecoration: 'none' }}>Testimonials</a>
             <a href="/#faq" style={{ textDecoration: 'none' }}>FAQs</a>
             <a href="/#contact" style={{ textDecoration: 'none' }}>Contact Us</a>
-            <El tag="a" className="site-phone" href="tel:6083172961" s="text-decoration:none;background:#E99025;color:#29262B;border-radius:999px;font-weight:700;white-space:nowrap;display:inline-flex;align-items:center;gap:8px" hover="background:#29262B;color:#FFFFFF"><PhoneIcon />608-317-2961</El>
+            <El tag="a" className="site-phone" href="tel:6083993500" s="text-decoration:none;background:#E99025;color:#29262B;border-radius:999px;font-weight:700;white-space:nowrap;display:inline-flex;align-items:center;gap:8px" hover="background:#29262B;color:#FFFFFF"><PhoneIcon />608-399-3500</El>
           </div>
           <MobileMenu base="/" />
         </nav>
@@ -71,6 +71,7 @@ export default function ThankYouPage() {
             <div style={{ display: 'flex', flexDirection: 'column', gap: 12, justifySelf: 'end' }}>
               <div style={{ fontSize: 13, fontWeight: 800, letterSpacing: '0.12em', color: '#E99025' }}>CONTACT</div>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 14, fontSize: 16, fontWeight: 600, lineHeight: 1.45 }}>
+                <a href="tel:6083993500" style={{ color: '#FFFFFF', display: 'inline-flex', alignItems: 'center', gap: 10 }}><PhoneIcon size={18} /><span>608-399-3500</span></a>
                 <a href={MAPS_URL} target="_blank" rel="noopener" style={{ color: '#FFFFFF', display: 'inline-flex', alignItems: 'flex-start', gap: 10, fontWeight: 600 }}>
                   <span style={{ marginTop: 2 }}><MapPinIcon size={18} /></span>
                   <span>1805 Granary St.<br />Unit 10<br />Holmen, WI 54636</span>

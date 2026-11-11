@@ -4,7 +4,7 @@ export const SITE_DESCRIPTION = 'Professional dog grooming and personalized boar
 export const OG_IMAGE = '/assets/salon.jpg';
 
 export const BUSINESS = {
-  phone: '+1-608-317-2961',
+  phone: '+1-608-399-3500',
   email: 'zenandden@gmail.com',
   street: '1805 Granary St., Unit 10',
   city: 'Holmen',

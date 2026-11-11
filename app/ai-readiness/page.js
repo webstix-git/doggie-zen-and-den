@@ -32,7 +32,7 @@ export default function Page() {
         <Row label="In business">10 years</Row>
         <Row label="Address">1805 Granary St., Unit 10, Holmen, WI 54636</Row>
         <Row label="Service area">Holmen, Onalaska, La Crosse, and communities within about 20 miles</Row>
-        <Row label="Phone"><a href="tel:6083172961" style={{ fontWeight: 700 }}>608-317-2961</a></Row>
+        <Row label="Phone"><a href="tel:6083993500" style={{ fontWeight: 700 }}>608-399-3500</a></Row>
         <Row label="Email"><a href="mailto:zenandden@gmail.com" style={{ fontWeight: 700 }}>zenandden@gmail.com</a></Row>
         <Row label="Facebook"><a href="https://www.facebook.com/doggiezenandden" style={{ fontWeight: 700 }}>facebook.com/doggiezenandden</a></Row>
         <Row label="Appointments">Call, email, message on Facebook, or use the request form on the contact section of the home page. One-time visits and regular schedules are both welcome.</Row>
@@ -66,7 +66,7 @@ export default function Page() {
         <Row label="Do you groom anxious or nervous dogs?">Yes. Many clients bring dogs that struggled with grooming elsewhere.</Row>
         <Row label="Do you board senior dogs or dogs with special needs?">Yes. Boarding includes personalized care for senior dogs, anxious dogs, and pets with unique needs.</Row>
         <Row label="Do I need a regular schedule?">No. One-time services and ongoing appointments are both available.</Row>
-        <Row label="How do I book?">Call 608-317-2961, email zenandden@gmail.com, message the Facebook page, or use the request form on the home page.</Row>
+        <Row label="How do I book?">Call 608-399-3500, email zenandden@gmail.com, message the Facebook page, or use the request form on the home page.</Row>
       </InfoPage>
     </>
   );

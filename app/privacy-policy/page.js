@@ -53,7 +53,7 @@ export default function Page() {
           <strong>Doggie Zen & Den</strong><br />
           1805 Granary St., Unit 10<br />
           Holmen, WI 54636<br />
-          Phone: <a href="tel:6083172961" style={{ fontWeight: 700 }}>608-317-2961</a><br />
+          Phone: <a href="tel:6083993500" style={{ fontWeight: 700 }}>608-399-3500</a><br />
           Email: <a href="mailto:zenandden@gmail.com" style={{ fontWeight: 700 }}>zenandden@gmail.com</a>
         </p>
       </InfoPage>

@@ -88,14 +88,14 @@ export default function MobileMenu({ base = '/', active = '' }) {
             </div>
           ))}
         </nav>
-        <a href="tel:6083172961" className="mobile-menu-call" onClick={close}><PhoneIcon size={18} />608-317-2961</a>
+        <a href="tel:6083993500" className="mobile-menu-call" onClick={close}><PhoneIcon size={18} />608-399-3500</a>
       </div>
     </div>
   );
 
   return (
     <div className="menu-actions">
-      <a href="tel:6083172961" className="menu-call" aria-label="Call 608-317-2961"><PhoneIcon size={18} /></a>
+      <a href="tel:6083993500" className="menu-call" aria-label="Call 608-399-3500"><PhoneIcon size={18} /></a>
       <button ref={toggleRef} type="button" className="menu-toggle" onClick={() => setOpen(true)} aria-label="Open menu" aria-expanded={open} aria-controls="mobile-menu-panel">
         <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round"><path d="M4 7h16M4 12h16M4 17h16" /></svg>
       </button>

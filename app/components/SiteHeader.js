@@ -40,7 +40,7 @@ export default function SiteHeader() {
           <a href="/#reviews" style={{ textDecoration: 'none' }}>Testimonials</a>
           <a href="/#faq" style={{ textDecoration: 'none' }}>FAQs</a>
           <a href="/#contact" style={{ textDecoration: 'none' }}>Contact Us</a>
-          <El tag="a" className="site-phone" href="tel:6083172961" s="text-decoration:none;background:#E99025;color:#29262B;border-radius:999px;font-weight:700;white-space:nowrap;display:inline-flex;align-items:center;gap:8px" hover="background:#29262B;color:#FFFFFF"><PhoneIcon />608-317-2961</El>
+          <El tag="a" className="site-phone" href="tel:6083993500" s="text-decoration:none;background:#E99025;color:#29262B;border-radius:999px;font-weight:700;white-space:nowrap;display:inline-flex;align-items:center;gap:8px" hover="background:#29262B;color:#FFFFFF"><PhoneIcon />608-399-3500</El>
         </div>
         <MobileMenu base="/" />
       </nav>

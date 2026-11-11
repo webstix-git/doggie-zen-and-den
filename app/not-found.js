@@ -51,7 +51,7 @@ export default function NotFound() {
               </nav>
               <div className="nf-actions">
                 <a href="/" className="nf-btn nf-btn-dark">Back to Home</a>
-                <a href="tel:6083172961" className="nf-btn nf-btn-orange"><PhoneIcon size={18} />608-317-2961</a>
+                <a href="tel:6083993500" className="nf-btn nf-btn-orange"><PhoneIcon size={18} />608-399-3500</a>
               </div>
             </div>
           </div>

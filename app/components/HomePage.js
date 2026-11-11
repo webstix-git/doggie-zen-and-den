@@ -169,7 +169,7 @@ export default function HomePage() {
             <a href="#reviews" className={section === 'reviews' ? 'is-section' : undefined} style={{ textDecoration: 'none' }}>Testimonials</a>
             <a href="#faq" className={section === 'faq' ? 'is-section' : undefined} style={{ textDecoration: 'none' }}>FAQs</a>
             <a href="#contact" className={section === 'contact' ? 'is-section' : undefined} style={{ textDecoration: 'none' }}>Contact Us</a>
-            <El tag="a" className="site-phone" href="tel:6083172961" s="text-decoration:none;background:#E99025;color:#29262B;border-radius:999px;font-weight:700;white-space:nowrap;display:inline-flex;align-items:center;gap:8px" hover="background:#29262B;color:#FFFFFF"><PhoneIcon />608-317-2961</El>
+            <El tag="a" className="site-phone" href="tel:6083993500" s="text-decoration:none;background:#E99025;color:#29262B;border-radius:999px;font-weight:700;white-space:nowrap;display:inline-flex;align-items:center;gap:8px" hover="background:#29262B;color:#FFFFFF"><PhoneIcon />608-399-3500</El>
           </div>
           <MobileMenu base="" active={section} />
         </nav>
@@ -314,8 +314,9 @@ export default function HomePage() {
             <div data-reveal="" style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
               <div style={{ alignSelf: 'flex-start', background: '#FFFFFF', color: '#29262B', borderRadius: 999, padding: '8px 16px', fontSize: 13, fontWeight: 800, letterSpacing: '0.12em' }}>HOLIDAY SPECIAL</div>
               <h2 style={{ margin: 0, fontFamily: "'Archivo',sans-serif", fontVariationSettings: "'wdth' 118", fontWeight: 850, fontSize: 'clamp(40px,5.4vw,76px)', lineHeight: 0.95, letterSpacing: '-0.025em' }}>Our holiday offer for your pup.</h2>
-              <p style={{ margin: 0, fontSize: 19, lineHeight: 1.55, maxWidth: 440, fontWeight: 600 }}>Press play to see this season&apos;s offer, then message us to reserve your spot.</p>
+              <p style={{ margin: 0, fontSize: 19, lineHeight: 1.55, maxWidth: 440, fontWeight: 600 }}>Press play to see this season&apos;s offer, then call or message us to reserve your spot.</p>
               <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
+                <El tag="a" href="tel:6083993500" s="text-decoration:none;background:#29262B;color:#FFFFFF;padding:18px 28px;border-radius:999px;font-weight:800;font-size:17px" hover="background:#FFFFFF;color:#29262B">Call 608-399-3500</El>
                 <El tag="a" href="https://www.facebook.com/doggiezenandden" target="_blank" rel="noopener" s="text-decoration:none;background:#FFFFFF;color:#29262B;padding:18px 26px;border-radius:999px;font-weight:800;font-size:17px" hover="background:#29262B;color:#FFFFFF">Message on Facebook</El>
               </div>
             </div>
@@ -402,6 +403,7 @@ export default function HomePage() {
             <h2 style={{ margin: 0, fontFamily: "'Archivo',sans-serif", fontVariationSettings: "'wdth' 120", fontWeight: 850, fontSize: 'clamp(42px,5.4vw,76px)', lineHeight: 0.92, letterSpacing: '-0.025em', textTransform: 'uppercase' }}>Schedule your dog&apos;s next visit.</h2>
             <p style={{ margin: 0, fontSize: 18, lineHeight: 1.6, color: '#d6d2cc', maxWidth: 480 }}>Contact us to schedule your dog&apos;s next grooming appointment or inquire about boarding.</p>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(min(100%,250px),1fr))', gap: 12 }}>
+              <El tag="a" href="tel:6083993500" s="text-decoration:none;color:#FFFFFF;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);border-radius:20px;padding:18px 20px;display:flex;flex-direction:column;gap:6px" hover="background:rgba(233,144,37,0.16);color:#FFFFFF"><span style={{ fontSize: 12, letterSpacing: '0.12em', color: '#E99025', fontWeight: 800 }}>CALL</span><span style={{ fontSize: 19, fontWeight: 700 }}>608-399-3500</span></El>
               <El tag="a" href="mailto:zenandden@gmail.com" s="text-decoration:none;color:#FFFFFF;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);border-radius:20px;padding:18px 20px;display:flex;flex-direction:column;gap:6px" hover="background:rgba(233,144,37,0.16);color:#FFFFFF"><span style={{ fontSize: 12, letterSpacing: '0.12em', color: '#E99025', fontWeight: 800 }}>EMAIL</span><span style={{ fontSize: 19, fontWeight: 700 }}>zenandden<wbr />@gmail.com</span></El>
               <div style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.12)', borderRadius: 20, padding: '18px 20px', display: 'flex', flexDirection: 'column', gap: 6 }}><span style={{ fontSize: 12, letterSpacing: '0.12em', color: '#E99025', fontWeight: 800 }}>VISIT</span><span style={{ fontSize: 17, lineHeight: 1.45 }}>1805 Granary St.<br />Unit 10<br />Holmen, WI 54636</span></div>
               <div style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.12)', borderRadius: 20, padding: '18px 20px', display: 'flex', flexDirection: 'column', gap: 6 }}><span style={{ fontSize: 12, letterSpacing: '0.12em', color: '#E99025', fontWeight: 800 }}>SERVING</span><span style={{ fontSize: 17, lineHeight: 1.45 }}>Holmen, Onalaska, and La Crosse</span></div>
@@ -433,7 +435,7 @@ export default function HomePage() {
               )}
               {formStatus === 'error' && (
                 <p role="alert" style={{ margin: 0, padding: '12px 16px', borderRadius: 14, background: '#FBE9E7', color: '#B71C1C', fontSize: 15, fontWeight: 600, lineHeight: 1.45 }}>
-                  Sorry, your request didn&apos;t go through. Please try again or call us at <a href="tel:6083172961" style={{ color: 'inherit', whiteSpace: 'nowrap' }}>608-317-2961</a>.
+                  Sorry, your request didn&apos;t go through. Please try again or call us at <a href="tel:6083993500" style={{ color: 'inherit', whiteSpace: 'nowrap' }}>608-399-3500</a>.
                 </p>
               )}
               <El tag="button" type="submit" disabled={formStatus === 'sending'} aria-busy={formStatus === 'sending'} s={'font:inherit;border:none;background:#E99025;color:#29262B;padding:18px 28px;border-radius:999px;font-weight:800;font-size:17px' + (formStatus === 'sending' ? ';opacity:0.7' : '')} hover={formStatus === 'sending' ? undefined : 'background:#29262B;color:#FFFFFF'}>{formStatus === 'sending' ? 'Sending…' : 'Send request'}</El>
@@ -477,6 +479,7 @@ export default function HomePage() {
             <div style={{ display: 'flex', flexDirection: 'column', gap: 12, justifySelf: 'end' }}>
               <div style={{ fontSize: 13, fontWeight: 800, letterSpacing: '0.12em', color: '#E99025' }}>CONTACT</div>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 14, fontSize: 16, fontWeight: 600, lineHeight: 1.45 }}>
+                <a href="tel:6083993500" style={{ color: '#FFFFFF', display: 'inline-flex', alignItems: 'center', gap: 10 }}><PhoneIcon size={18} /><span>608-399-3500</span></a>
                 <a href={MAPS_URL} target="_blank" rel="noopener" style={{ color: '#FFFFFF', display: 'inline-flex', alignItems: 'flex-start', gap: 10, fontWeight: 600 }}>
                   <span style={{ marginTop: 2 }}><MapPinIcon size={18} /></span>
                   <span>1805 Granary St.<br />Unit 10<br />Holmen, WI 54636</span>
