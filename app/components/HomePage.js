@@ -190,11 +190,11 @@ export default function HomePage() {
             </div>
           </div>
           <div data-reveal="" style={{ position: 'relative' }}>
-            <div style={{ borderRadius: '340px 340px 28px 28px', overflow: 'hidden', aspectRatio: '4/4.6', boxShadow: '0 30px 60px -30px rgba(41,38,43,0.45)' }}>
-              <img src="/assets/salon.jpg" alt="Groomers at work in the Doggie Zen & Den salon" width={1440} height={1080} fetchPriority="high" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: '60% 50%', display: 'block' }} />
+            <div style={{ borderRadius: '340px 340px 28px 28px', overflow: 'hidden', aspectRatio: '1005/1000', boxShadow: '0 30px 60px -30px rgba(41,38,43,0.45)' }}>
+              <img src="/assets/hero-zen-den.jpg" alt="Z&D marquee letters on a vintage suitcase, surrounded by the team's matching dog-print sneakers" width={1005} height={1000} fetchPriority="high" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: '50% 50%', display: 'block' }} />
             </div>
-            <div style={{ position: 'absolute', left: -18, bottom: 36, background: '#E99025', color: '#29262B', borderRadius: 20, padding: '16px 20px', transform: 'rotate(-4deg)', boxShadow: '0 14px 30px -12px rgba(41,38,43,0.5)', maxWidth: 220 }}>
-              <div style={{ fontFamily: "'Caveat Brush',cursive", fontSize: 26, lineHeight: 1 }}>Treated like family</div>
+            <div className="hero-badge" style={{ position: 'absolute', left: -18, bottom: 36, background: '#E99025', color: '#29262B', borderRadius: 20, padding: '16px 20px', transform: 'rotate(-4deg)', boxShadow: '0 14px 30px -12px rgba(41,38,43,0.5)', maxWidth: 220 }}>
+              <div className="hero-badge-title" style={{ fontFamily: "'Caveat Brush',cursive", fontSize: 26, lineHeight: 1 }}>Treated like family</div>
               <div style={{ fontSize: 14, fontWeight: 600, marginTop: 4 }}>Puppies, seniors & nervous pups welcome</div>
             </div>
             <div style={{ position: 'absolute', right: -10, top: 24, width: 96, height: 96, borderRadius: '50%', background: '#29262B', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 14px 30px -12px rgba(41,38,43,0.5)' }}>

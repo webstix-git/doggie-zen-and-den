@@ -76,6 +76,10 @@ header.site-header .nav-drop-menu a:hover{background:#E9E5DF;color:#29262B}
 @media (max-width:360px){
   #why-grid .why-card-title .keep{white-space:normal}
 }
+@media (max-width:425px){
+  .hero-badge{bottom:-20px !important}
+  .hero-badge-title{font-size:18px !important}
+}
 header.site-header.is-stuck .site-phone svg{width:14px;height:14px}
 
 body:has(.page-thanks){background:#FFFFFF;color:#14183A}
