@@ -1,7 +1,7 @@
 export const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL || 'https://www.doggiezenandden.com').replace(/\/+$/, '');
 export const SITE_NAME = 'Doggie Zen & Den';
 export const SITE_DESCRIPTION = 'Professional dog grooming and personalized boarding in Holmen, WI. Patient care for puppies, seniors, and anxious dogs. Serving Onalaska and La Crosse.';
-export const OG_IMAGE = '/assets/salon.jpg';
+export const OG_IMAGE = '/assets/hero-zen-den.jpg';
 
 export const BUSINESS = {
   phone: '+1-608-399-3500',

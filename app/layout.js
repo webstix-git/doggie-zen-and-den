@@ -16,7 +16,7 @@ export const metadata = {
     locale: 'en_US',
     title: DEFAULT_TITLE,
     description: SITE_DESCRIPTION,
-    images: [{ url: OG_IMAGE, width: 1440, height: 1080, alt: 'Groomers at work in the Doggie Zen & Den salon' }],
+    images: [{ url: OG_IMAGE, width: 1005, height: 1000, alt: 'Z&D marquee letters on a vintage suitcase, surrounded by the team\'s matching dog-print sneakers' }],
   },
   twitter: { card: 'summary_large_image', title: DEFAULT_TITLE, description: SITE_DESCRIPTION, images: [OG_IMAGE] },
   verification: { google: process.env.GOOGLE_SITE_VERIFICATION || 'Y2UjoxjE7nUMnBnOroE8tJztcEYeUpn6StYcAiMoBrs' },
