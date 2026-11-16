@@ -1,7 +1,7 @@
 import './globals.css';
 import GoogleAnalytics, { GoogleTagManagerNoScript } from './components/GoogleAnalytics';
 import ScrollTop from './components/ScrollTop';
-import { OG_IMAGE, SITE_DESCRIPTION, SITE_NAME, SITE_URL } from './lib/site';
+import { OG_IMAGE, SITE_DESCRIPTION, SITE_NAME, SITE_URL, ogImages } from './lib/site';
 
 const DEFAULT_TITLE = 'Doggie Zen & Den | Dog Grooming & Boarding in Holmen, WI';
 
@@ -16,7 +16,7 @@ export const metadata = {
     locale: 'en_US',
     title: DEFAULT_TITLE,
     description: SITE_DESCRIPTION,
-    images: [{ url: OG_IMAGE, width: 1005, height: 1000, alt: 'Z&D marquee letters on a vintage suitcase, surrounded by the team\'s matching dog-print sneakers' }],
+    images: ogImages(),
   },
   twitter: { card: 'summary_large_image', title: DEFAULT_TITLE, description: SITE_DESCRIPTION, images: [OG_IMAGE] },
   verification: { google: process.env.GOOGLE_SITE_VERIFICATION || 'Y2UjoxjE7nUMnBnOroE8tJztcEYeUpn6StYcAiMoBrs' },

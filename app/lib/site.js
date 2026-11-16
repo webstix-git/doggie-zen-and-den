@@ -2,6 +2,8 @@ export const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL || 'https://www.doggie
 export const SITE_NAME = 'Doggie Zen & Den';
 export const SITE_DESCRIPTION = 'Professional dog grooming and personalized boarding in Holmen, WI. Patient care for puppies, seniors, and anxious dogs. Serving Onalaska and La Crosse.';
 export const OG_IMAGE = '/assets/hero-zen-den.jpg';
+export const OG_IMAGE_ALT = "Z&D marquee letters on a vintage suitcase, surrounded by the team's matching dog-print sneakers";
+export const OG_IMAGE_SIZE = { width: 1005, height: 1000 };
 
 export const BUSINESS = {
   phone: '+1-608-399-3500',
@@ -23,12 +25,16 @@ export const PAGES = [
   { path: '/ai-readiness', changeFrequency: 'monthly', priority: 0.5 },
 ];
 
+export function ogImages() {
+  return [{ url: OG_IMAGE, width: OG_IMAGE_SIZE.width, height: OG_IMAGE_SIZE.height, alt: OG_IMAGE_ALT, type: 'image/jpeg' }];
+}
+
 export function pageMetadata({ title, description, path }) {
   return {
     title: { absolute: title },
     description,
     alternates: { canonical: path },
-    openGraph: { type: 'website', siteName: SITE_NAME, locale: 'en_US', title, description, url: path, images: [OG_IMAGE] },
+    openGraph: { type: 'website', siteName: SITE_NAME, locale: 'en_US', title, description, url: path, images: ogImages() },
     twitter: { card: 'summary_large_image', title, description, images: [OG_IMAGE] },
   };
 }
