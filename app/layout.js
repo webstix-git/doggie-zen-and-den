@@ -30,6 +30,14 @@ export const viewport = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
+      <head>
+        <script
+          defer
+          data-site="43888569aea14ba5"
+          data-endpoint="https://ywwxvriolxwuqcwjaluh.supabase.co/functions/v1/track-event"
+          src="https://midwestfamilyportal.com/track.js"
+        />
+      </head>
       <body>
         <GoogleTagManagerNoScript />
         {children}
